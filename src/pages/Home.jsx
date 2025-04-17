@@ -7,10 +7,10 @@ function Home() {
     <>
       <div className="main">
         <img className="image-2" src="image-20.png" />
-        <img
-          className="_4-df-24-bb-8-fee-2-4-acf-8-ce-6-f-70860309314-1"
-          src="_4-df-24-bb-8-fee-2-4-acf-8-ce-6-f-70860309314-10.png"
-        />
+        <div className="titulo">
+          <div class="circulo"></div>
+          <h1>EQUILIBRIO</h1>
+        </div>
         <div className="building-blocks-leading-element">
           <svg
             className="icon"
@@ -29,7 +29,7 @@ function Home() {
         <div className="line-1"></div>
         <div className="como-voc-est-se-sentindo">Como você está se sentindo?</div>
         <div className="h-bitos-saud-veis">Hábitos saudáveis</div>
-        <div className="ofensiva">Ofensiva</div>
+        <div className="ofensiva borda">Ofensiva</div>
         <div className="calend-rio-emocional">Calendário emocional</div>
         <div className="seu-progresso">Seu Progresso</div>
         <img className="image-1" src="image-10.png" />
@@ -81,7 +81,7 @@ function Home() {
           className="b-297-afa-3-67-a-5-4-dee-85-bb-8-b-20-aaf-724-ac-1"
           src="b-297-afa-3-67-a-5-4-dee-85-bb-8-b-20-aaf-724-ac-10.png"
         />
-        <div className="modal-date-picker">
+        <div className="modal-date-picker ">
           <div className="local-calendar-grid">
             <div className="days-of-the-week">
               <div className="sunday">

@@ -2,6 +2,9 @@
 .main * {
   box-sizing: border-box;
 }
+.borda{
+  border: solid red 1px;
+}
 .main {
   background: #ffffff;
   height: 1089px;
@@ -16,7 +19,7 @@
   object-fit: cover;
   aspect-ratio: 199/55;
 }
-._4-df-24-bb-8-fee-2-4-acf-8-ce-6-f-70860309314-1 {
+.titulo{
   width: 240px;
   height: 77px;
   position: absolute;
@@ -24,6 +27,17 @@
   top: 7px;
   object-fit: cover;
   aspect-ratio: 240/77;
+ 
+}
+.circulo {
+  width: 70px;
+  height: 70px;
+  background-color: transparent;
+  border: 5px solid black;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: -80px;
 }
 .building-blocks-leading-element {
   width: 26px;
