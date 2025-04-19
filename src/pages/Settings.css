@@ -1,0 +1,205 @@
+* p{
+  font-size: 22px;
+}
+.setting-corpo {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0 10px;
+}
+
+.topo-setting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid black 1px;
+  width: 109%;
+  margin-left: -18px;
+}
+
+.logo-settings {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+}
+
+.logo-circulo {
+  width: 40px;
+  height: 40px;
+  border: 2.5px solid black;
+  border-radius: 50%;
+}
+
+.logo-texto {
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
+}
+
+
+
+.botao-fechar-container {
+  position: absolute;
+  top: 80px;
+  right: 45px;
+ 
+}
+
+.botao-fechar {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.botao-fechar:hover {
+  color: white;
+  background-color: rgb(249, 107, 107);
+  border: solid rgb(229, 23, 23) 1px;
+}
+
+
+
+
+
+
+.configuracoes {
+  border-bottom: solid 1px black;
+  padding-bottom: 10px;
+  margin-top: 50px;
+}
+
+.ativar-notificacao {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.ativar {
+  all: unset;
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-left: 3px;
+  position: relative;
+  margin-right: 24px;
+}
+
+.bola {
+  width: 25px;
+  height: 25px;
+  background-color: #666;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.ativar.ativo {
+  background-color: #3498db;
+}
+
+.ativar.ativo .bola {
+  transform: translateX(30px);
+  background-color: white;
+}
+
+.dados {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.dados p,
+.texto-confg {
+  margin-left: 10px;
+}
+
+.valor-clique {
+  margin-right: 30px;
+  width: 100px;
+  cursor: pointer;
+  text-align: right;
+}
+
+.desenvolvedores {
+  margin-left: 10px;
+}
+
+.desenvolvedores p {
+  margin-top: -10px;
+}
+
+.mudanca-fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.caixa-mudanca {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.titulo-modal {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.input-modal {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.botao-confirmar {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.novo-valor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.novo-valor p {
+  padding-bottom: 20px;
+  white-space: nowrap;
+  font-weight: bold;
+}

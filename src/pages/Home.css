@@ -2,9 +2,6 @@
 .main * {
   box-sizing: border-box;
 }
-.borda{
-  border: solid red 1px;
-}
 .main {
   background: #ffffff;
   height: 1089px;
@@ -37,7 +34,7 @@
   border-radius: 50%;
   position: absolute;
   top: 3px;
-  left: -80px;
+ 
 }
 .building-blocks-leading-element {
   width: 26px;
