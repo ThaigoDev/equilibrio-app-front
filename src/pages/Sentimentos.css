@@ -17,23 +17,34 @@
   text-align: center;
 }
 
-/* Container para os emojis */
-.emojis {
+/* Subtítulo posicionado à esquerda dos emojis */
+.subtitulo {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold; /* Adiciona negrito */
+  margin-right: 20px; /* Espaço entre a frase e os emojis */
+  white-space: nowrap; /* Evita quebra de linha */
+}
+
+/* Container para os emojis e a frase */
+.sentimentos-header {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  align-items: center;
+  justify-content: flex-start; /* Posiciona a frase à esquerda */
+  gap: 15px; /* Espaço entre a frase e os emojis */
   margin-bottom: 20px;
 }
 
 /* Estilo para cada emoji (usando imagens) */
 .emoji {
-  width: 40px;
-  height: 40px;
+  width: 60px; /* Tamanho aumentado */
+  height: 60px; /* Tamanho aumentado */
   cursor: pointer;
   transition: transform 0.2s ease;
 }
+
 .emoji:hover {
-  transform: scale(1.2);
+  transform: scale(1.2); /* Efeito de zoom ao passar o mouse */
 }
 
 /* Wrapper que agrupa o campo de nota e o botão de enviar */
@@ -73,6 +84,7 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
+
 .enviar-button:hover {
   background-color: #333;
 }
