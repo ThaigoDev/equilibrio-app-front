@@ -7,9 +7,13 @@ import "./Home.css";
 const Home = () => {
     return (
         <div className="home-container">
+            {/* Componentes principais */}
             <Equilibrio />
             <Sentimentos />
             <Fogo/>
+            
+         
+
         </div>
     );
 };

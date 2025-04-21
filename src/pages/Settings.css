@@ -39,7 +39,7 @@
 
 .botao-fechar-container {
   position: absolute;
-  top: 80px;
+  top: 125px;
   right: 45px;
  
 }
@@ -65,8 +65,38 @@
 }
 
 
+.circle {
+  width: 70px;
+  height: 70px;
+  border: 5px solid black;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+/* Texto "Equilíbrio" */
+.text {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  margin-right: 15px;
+}
 
 
+.corpo-topo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed; 
+  top: 0; 
+  left: -1px;
+  width: 100%; 
+  background-color: #f4f4f4; 
+  padding: 20px;
+  z-index: 10;
+  font-family: Arial, sans-serif;
+  border-bottom: 2px solid black; 
+ 
+}
 
 
 .configuracoes {
@@ -76,6 +106,7 @@
 }
 
 .ativar-notificacao {
+  margin-top: 140px;
   width: 100%;
   display: flex;
   align-items: center;

@@ -1,15 +1,15 @@
 import "./Fogo.css";
 
-function Fogo() {
-    const numero = 10;
+function Fogo() { 
+    const cont = 10;
 
     let imagemFogo;
     let classeFogo;
 
-    if (numero >= 30) {
+    if (cont >= 30) {
         imagemFogo = "src/images/fogo forte.png";
         classeFogo = "fogo-forte";
-    } else if (numero >= 10) {
+    } else if (cont >= 10) {
         imagemFogo = "src/images/fogo acesso.png";
         classeFogo = "fogo-acesso";
     } else {
@@ -21,7 +21,7 @@ function Fogo() {
         <div className="fogo-corpo">
             <h1>ofensiva</h1>
             <div className="fogo-caixa">
-                <h1>Dias Consecutivos {numero}</h1>
+                <h1>Dias Consecutivos {cont}</h1>
                 <img
                     src={imagemFogo}
                     alt="ícone de fogo"

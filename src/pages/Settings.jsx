@@ -1,7 +1,10 @@
 import { useState } from "react";
-import "./Settings.css"
+import { useNavigate } from "react-router-dom";
+import "./Settings.css";
+import "./Equilibrio.css";
 
 function Settings() {
+    const navigate = useNavigate();
 
     const [ativo, setAtivo] = useState(false);
 
@@ -40,23 +43,20 @@ function Settings() {
     return (
         <>
             <div className="setting-corpo">
+                <div className="corpo-topo">
+                    <div className="circle"></div>
+                    <span className="text">Equilíbrio</span>
+                </div>
 
-                {/* topo com a log (acho que pode ser retirada)*/}
-
-                <div className="topo-setting">
-                    <div className="logo-settings">
-                        <div className="logo-circulo"></div>
-                        <div className="logo-texto">Equilíbrio</div>
+                {/* Botão de fechar que volta pra Home */}
+                <div className="botao-fechar-container">
+                    <div
+                        className="botao-fechar"
+                        onClick={() => navigate("/")}
+                    >
+                        X
                     </div>
                 </div>
-
-                {/*botao fechar*/}
-
-                <div className="botao-fechar-container">
-                    <div className="botao-fechar">X</div>
-                </div>
-
-                {/*todas as configuraçoes*/}
 
                 <div className="configuracoes">
                     <div className="ativar-notificacao">
@@ -73,8 +73,6 @@ function Settings() {
                         </div>
                     ))}
                 </div>
-
-                {/* footer com os nomes dos desenvolvedores*/}
 
                 <div className="desenvolvedores">
                     <h2>desenvolvedores</h2>
@@ -93,8 +91,6 @@ function Settings() {
                     <p>Otávio Henringer -UX/UI</p>
                 </div>
             </div>
-
-            {/* caixa para alterar as configurações*/}
 
             {campoSelecionado && (
                 <div className="mudanca-fundo">
