@@ -1,10 +1,13 @@
-.main,
-.main * {
-  box-sizing: border-box;
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4; /* Ajuste de fundo */
+    min-height: 100vh; /* Garante que a página ocupe toda a altura da tela */
+    margin: 0;
+    padding: 0;
 }
-.borda{
-  border: solid red 1px;
-}
+
 .main {
   background: #ffffff;
   height: 1089px;
@@ -37,7 +40,7 @@
   border-radius: 50%;
   position: absolute;
   top: 3px;
-  left: -80px;
+ 
 }
 .building-blocks-leading-element {
   width: 26px;
@@ -1047,3 +1050,4 @@
   object-fit: cover;
   aspect-ratio: 19/22;
 }
+
