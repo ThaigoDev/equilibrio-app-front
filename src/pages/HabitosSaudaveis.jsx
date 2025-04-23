@@ -1,98 +1,62 @@
-// HabitosSaudaveis.jsx
-import { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './HabitosSaudaveis.css';
 
-export default function HabitosSaudaveis() {
-  const [formData, setFormData] = useState({
-    agua: '',
-    sono: '',
-    exercicio: '',
-    peso: '',
-    comentario: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('http://localhost:3000/api/habitos', formData); // <-- alterar para a rota real do back-end
-      alert('Dados enviados com sucesso!');
-    } catch (error) {
-      console.error('Erro ao enviar dados:', error);
-      alert('Erro ao enviar os dados.');
-    }
+const HabitosSaudaveis = () => {
+  // Dados mockados - ESTES DADOS SERÃO SUBSTITUÍDOS PELO BACKEND
+  const habitos = {
+    agua: { atual: 0, meta: 8 },
+    exercicio: { atual: 0, meta: 60 },
+    sono: { atual: 0, meta: 60 },
+    peso: { atual: 70.5, meta: 60.5 }
   };
 
   return (
     <div className="habitos-container">
-      <h2 className="titulo">Hábitos Saudáveis</h2>
-      <form onSubmit={handleSubmit} className="formulario">
-        <div className="campo">
-          <label>Água (copos)</label>
-          <input
-            type="number"
-            name="agua"
-            value={formData.agua}
-            onChange={handleChange}
-            placeholder="Quantos copos de água?"
-          />
+      <h2 className="habitos-titulo">Hábitos saudáveis</h2>
+      
+      <div className="habitos-box">
+        {/* ÁGUA - Tags para conexão com backend */}
+        <div className="habito-item">
+          <span className="habito-nome">Água</span>
+          <span className="habito-valor" 
+                data-agua-atual={habitos.agua.atual} 
+                data-agua-meta={habitos.agua.meta}>
+            {habitos.agua.atual} / {habitos.agua.meta} copos
+          </span>
         </div>
-
-        <div className="campo">
-          <label>Horas de Sono</label>
-          <input
-            type="number"
-            name="sono"
-            value={formData.sono}
-            onChange={handleChange}
-            placeholder="Horas de sono"
-          />
+        
+        {/* EXERCÍCIO - Tags para conexão com backend */}
+        <div className="habito-item">
+          <span className="habito-nome">Exercício</span>
+          <span className="habito-valor" 
+                data-exercicio-atual={habitos.exercicio.atual} 
+                data-exercicio-meta={habitos.exercicio.meta}>
+            {habitos.exercicio.atual.toString().padStart(2, '0')} / {habitos.exercicio.meta} min
+          </span>
         </div>
-
-        <div className="campo">
-          <label>Exercício</label>
-          <input
-            type="text"
-            name="exercicio"
-            value={formData.exercicio}
-            onChange={handleChange}
-            placeholder="Tipo de exercício e duração"
-          />
+        
+        {/* SONO - Tags para conexão com backend */}
+        <div className="habito-item">
+          <span className="habito-nome">Sono</span>
+          <span className="habito-valor" 
+                data-sono-atual={habitos.sono.atual} 
+                data-sono-meta={habitos.sono.meta}>
+            {habitos.sono.atual.toString().padStart(2, '0')} / {habitos.sono.meta} min
+          </span>
         </div>
-
-        <div className="campo">
-          <label>Peso (kg)</label>
-          <input
-            type="number"
-            name="peso"
-            value={formData.peso}
-            onChange={handleChange}
-            placeholder="Seu peso de hoje"
-          />
+        
+        {/* PESO - Tags para conexão com backend */}
+        <div className="habito-item">
+          <span className="habito-nome">Peso</span>
+          <span className="habito-valor" 
+                data-peso-atual={habitos.peso.atual} 
+                data-peso-meta={habitos.peso.meta}>
+            {habitos.peso.atual} / {habitos.peso.meta} kg
+          </span>
         </div>
-
-        <div className="campo">
-          <label>Comentário do Dia</label>
-          <textarea
-            name="comentario"
-            value={formData.comentario}
-            onChange={handleChange}
-            placeholder="Escreva aqui como foi seu dia"
-          />
-        </div>
-
-        <button type="submit" className="botao-salvar">
-          Salvar Dados
-        </button>
-      </form>
+      </div>
     </div>
   );
-}
+};
+
+export default HabitosSaudaveis;
