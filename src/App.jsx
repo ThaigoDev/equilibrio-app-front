@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import Fogo from "./pages/Fogo";
 
+
 function App() {
   return (
     <Router>
