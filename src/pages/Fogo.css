@@ -1,0 +1,73 @@
+.fogo-corpo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fogo-caixa {
+    margin-left: 50px;
+}
+
+.fogo-imagen {
+    width: 70px;
+    height: 75px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.fogo-apagado {
+    animation: none;
+}
+
+.fogo-acesso {
+    animation: pulsar-fraco 1.2s infinite ease-in-out;
+}
+
+.fogo-forte {
+    animation: pulsar-forte 1.9s infinite ease-in-out;
+}
+
+@keyframes pulsar-fraco {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.03);
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulsar-forte {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    25% {
+        transform: scale(1.08) rotate(-1deg);
+        opacity: 0.85;
+    }
+
+    50% {
+        transform: scale(1.1) rotate(1deg);
+        opacity: 0.9;
+    }
+
+    75% {
+        transform: scale(1.08) rotate(-1deg);
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
