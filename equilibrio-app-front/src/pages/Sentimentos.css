@@ -1,0 +1,90 @@
+/* Container principal do componente "Como você está se sentindo?" */
+.sentimentos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px; /* Espaço para não ficar escondido pelo header fixo */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Título do componente */
+.titulo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Subtítulo posicionado à esquerda dos emojis */
+.subtitulo {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold; /* Adiciona negrito */
+  margin-right: 20px; /* Espaço entre a frase e os emojis */
+  white-space: nowrap; /* Evita quebra de linha */
+}
+
+/* Container para os emojis e a frase */
+.sentimentos-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Posiciona a frase à esquerda */
+  gap: 15px; /* Espaço entre a frase e os emojis */
+  margin-bottom: 20px;
+}
+
+/* Estilo para cada emoji (usando imagens) */
+.emoji {
+  width: 60px; /* Tamanho aumentado */
+  height: 60px; /* Tamanho aumentado */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.emoji:hover {
+  transform: scale(1.2); /* Efeito de zoom ao passar o mouse */
+}
+
+/* Wrapper que agrupa o campo de nota e o botão de enviar */
+.note-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+/* Container para o campo de nota (pode ser usado para ajustes adicionais) */
+.note-container {
+  flex: 1;
+}
+
+/* Campo de entrada para a nota */
+.nota-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Botão de enviar posicionado fora do input, à direita */
+.enviar-button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.enviar-button:hover {
+  background-color: #333;
+}
