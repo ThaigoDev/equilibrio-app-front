@@ -17,7 +17,7 @@ function PopUp_Calendario_emocional() {
                 <div className="header-left">
 
                     <div className="emoji">😊</div>
-                    <h3>08 maio, 2025</h3>
+                    <h3>  08 maio, 2025</h3>
 
                 </div>
 
@@ -28,7 +28,8 @@ function PopUp_Calendario_emocional() {
 
 
             <div className="popup-note">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque nulla facere maxime architecto illo debitis ea, fuga nostrum saepe consequatur quos eius, officiis quidem laborum tempora omnis. Voluptas, quidem nihil.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque nulla facere maxime architecto illo debitis ea, 
+                fuga nostrum saepe consequatur quos eius, officiis quidem laborum tempora omnis. Voluptas, quidem nihil.
             </div>
 
             <br />
