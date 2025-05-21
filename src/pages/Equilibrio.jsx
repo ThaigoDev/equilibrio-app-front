@@ -16,6 +16,6 @@ const Equilibrio = () => {
       </button>
     </div>
   );
-};
+}; 
 
 export default Equilibrio;
