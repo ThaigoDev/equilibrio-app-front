@@ -1,0 +1,86 @@
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 380px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 999;
+    border: 2px solid #000000;
+    font-family: Arial, sans-serif;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fechar-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #000000;
+    cursor: pointer;
+}
+
+.fechar-button:hover {
+    color: red;
+}
+
+.popup-info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.popup-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.counter button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.counter span {
+    min-width: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+}
+
+.salvar-button {
+    align-self: flex-end;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.salvar-button:hover {
+    opacity: 0.8;
+    background-color: #333;
+}
