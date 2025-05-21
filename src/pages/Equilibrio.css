@@ -11,6 +11,7 @@
     z-index: 10; /* Mantém o componente acima de outros elementos */
     font-family: Arial, sans-serif;
     border-bottom: 2px solid black; /* Linha separadora */
+    
 }
 
 /* Círculo à esquerda */
