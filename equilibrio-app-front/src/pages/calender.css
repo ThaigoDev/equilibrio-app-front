@@ -7,7 +7,7 @@
 
 .container::before {
   content: "-------- Calendário Emocional --------";    
-  top: 0;                        
+  top: 1;                        
   left: 50%;                      
   font-size: 1rem;            
   color: black;               
