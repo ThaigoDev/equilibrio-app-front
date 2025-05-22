@@ -93,8 +93,8 @@
 
 /* Dia selecionado */
 .react-calendar__tile--active {
-  background: #3b82f6 !important;
-  color: #ffffff !important;
+  background: #3b82f6 ;
+  color: #ffffff ;
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
 }
 
