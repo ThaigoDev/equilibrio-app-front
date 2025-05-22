@@ -1,0 +1,143 @@
+/* Contêiner principal */
+.sentimentos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+
+
+
+
+.titulo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  margin-bottom: 20px; /* Espaço adequado entre título e emojis */
+  display: block;/* Garante que não seja oculto */
+  visibility: visible; /* Certifica que está visível */
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ .subtitulo {
+  font-size: 18px;
+  font-weight: bold; /* Negrito */
+  color: #444; /* Um tom diferente para diferenciar do título */
+  text-align: center;
+  margin-bottom: 15px;
+  display: block !important; /* Garante que não seja oculto */
+  visibility: visible !important;
+}
+
+
+
+
+
+
+/* Emojis */
+.emojis {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Permite que os emojis se ajustem em telas menores */
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.emoji {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: scale(1.3);
+}
+
+.emoji:hover {
+  transform: scale(1.2);
+}
+
+/* Wrapper do campo de nota e botão */
+.note-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  gap: 10px; /* Garante um espaçamento melhor entre os elementos */
+}
+
+/* Campo de nota */
+.nota-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Botão enviar */
+.enviar-button {
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.enviar-button:hover {
+  background-color: #333;
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+  .emoji {
+    width: 50px;
+    height: 50px;
+  }
+
+  .nota-input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .enviar-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Ajustes para telas menores (smartphones) */
+@media (max-width: 480px) {
+  .note-wrapper {
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: stretch;
+  }
+
+  .nota-input {
+    width: 100%;
+    margin-bottom: 10px; /* Espaçamento entre input e botão */
+  }
+
+  .enviar-button {
+    width: 100%;
+  }
+
+  .titulo {
+    font-size: 18px;
+  }
+
+  .emoji {
+    width: 25px;
+    height: 25px;
+  }
+}

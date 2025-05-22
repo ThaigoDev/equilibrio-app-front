@@ -1,0 +1,52 @@
+/* Estilo geral para fixar no topo da página */
+.equilibrio-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; /* Fixa o componente no topo da página */
+    top: 0; /* Define a posição no topo */
+    width: 100%; /* Ocupa a largura total da página */
+    background-color: #f4f4f4; /* Adicione um fundo, se necessário */
+    padding: 20px; /* Espaçamento interno */
+    z-index: 10; /* Mantém o componente acima de outros elementos */
+    font-family: Arial, sans-serif;
+    border-bottom: 2px solid black; /* Linha separadora */
+    
+}
+
+/* Círculo à esquerda */
+.circle {
+    width: 70px;
+    height: 70px;
+    border: 5px solid black;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-image: url("C:\Users\cassi\OneDrive\Anexos\Desktop\equilibrio-app-front-1\src\images\create a circular image of the same image to fit into the circle as a PNG.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Texto "Equilíbrio" */
+.text {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-right: 15px;
+}
+
+/* Botão da engrenagem */
+.gear-button {
+    width: 40px;
+    height: 40px;
+    background: url("https://cdn.icon-icons.com/icons2/1524/PNG/512/gear_106450.png") no-repeat center center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+}
+
+/* Efeito ao passar o mouse no botão */
+.gear-button:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+}
