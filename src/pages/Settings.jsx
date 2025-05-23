@@ -60,7 +60,7 @@ function Settings() {
 
                 <div className="configuracoes">
                     <div className="ativar-notificacao">
-                        <p className="texto-confg">ativar configuracoes</p>
+                        <p className="texto-confg">Ativar configurações</p>
                         <button className={`ativar ${ativo ? "ativo" : ""}`} onClick={() => setAtivo(!ativo)}>
                             <div className="bola"></div>
                         </button>
@@ -75,20 +75,21 @@ function Settings() {
                 </div>
 
                 <div className="desenvolvedores">
-                    <h2>desenvolvedores</h2>
-                    <p style={{ marginBottom: '40px' }}>Thiago Duarte -Lider Geral</p>
-                    <p>Jairo de Cássio -Lider Dev. Front-End</p>
-                    <p>Cauã Vitor -Dev. Front-End</p>
-                    <p>Lucas Henrique -Dev. Front-End</p>
-                    <p>Timoteo Teixeira -Dev. Front-End</p>
-                    <p style={{ marginBottom: '40px' }}>Ygor -Dev. Front-End</p>
-                    <p>Thiago Duarte -Lider Dev.back-end</p>
-                    <p>Cauam Algusto -Dev.back-end</p>
-                    <p>Luciano Junior -Dev.back-end</p>
-                    <p>Marco túlio-Dev.back-end</p>
-                    <p style={{ marginBottom: '40px' }}>Rafael Florindo -Dev.back-end</p>
-                    <p style={{ marginBottom: '40px' }}>Matheus Henringer -Documentação</p>
-                    <p>Otávio Henringer -UX/UI</p>
+                    <h2>Desenvolvedores:</h2>
+                    <p style={{ marginBottom: '40px' }}>Thiago Duarte - Lider Geral</p>
+                    <p>Jairo de Cássio - Lider Dev. Front-End</p>
+                    <p>Cauã Vitor - Dev. Front-End</p>
+                    <p>Lucas Henrique - Dev. Front-End</p>
+                    <p>Otávio Herdy - Dev. Front-End</p>
+                    <p>Timoteo Teixeira - Dev. Front-End</p>
+                    <p style={{ marginBottom: '40px' }}>Ygor - Dev. Front-End</p>
+                    <p>Thiago Duarte - Lider Dev.back-end</p>
+                    <p>Cauam Algusto - Dev.back-end</p>
+                    <p>Luciano Junior - Dev.back-end</p>
+                    <p>Marco túlio - Dev.back-end</p>
+                    <p style={{ marginBottom: '40px' }}>Rafael Florindo - Dev.back-end</p>
+                    <p style={{ marginBottom: '40px' }}>Matheus Henringer - Documentação</p>
+                    <p>Otávio Herdy - UX/UI</p>
                 </div>
             </div>
 

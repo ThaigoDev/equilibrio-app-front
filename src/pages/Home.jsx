@@ -13,11 +13,9 @@ import "./Home.css";
 const Home = () => {
     return (
         <div className="home-container">
-         
             <Equilibrio />
             <Sentimentos />
             <Fogo/>
-         
             <HabitosSaudaveis />
         </div>
     );
