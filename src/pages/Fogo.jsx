@@ -1,7 +1,7 @@
 import "./Fogo.css";
 
 function Fogo() { 
-    const cont = 10;
+    const cont = 100;
 
     let imagemFogo;
     let classeFogo;
