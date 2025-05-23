@@ -20,11 +20,10 @@
     border: 5px solid black;
     border-radius: 50%;
     margin-right: 15px;
-<<<<<<<<< Temporary merge branch 1
+
     background-image: url("../images/create a circular image of the same image to fit into the circle as a PNG.png");
-=========
+
     background-image: url("/images/create a circular image of the same image to fit into the circle as a PNG.png");
->>>>>>>>> Temporary merge branch 2
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
