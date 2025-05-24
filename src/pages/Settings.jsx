@@ -10,7 +10,7 @@ function Settings() {
 
     const [dados, setDados] = useState({
         horario: "20:00",
-        copos: 8,
+        copos: "8 copos",
         exercicios: "60min",
         peso: "70,5kg",
         ofensiva: "7 dias"
@@ -48,7 +48,7 @@ function Settings() {
                     <span className="text">Equilíbrio</span>
                 </div>
 
-                {/* Botão de fechar que volta pra Home */}
+                  {/* Botão de fechar que volta pra Home */}
                 <div className="botao-fechar-container">
                     <div
                         className="botao-fechar"
@@ -60,7 +60,7 @@ function Settings() {
 
                 <div className="configuracoes">
                     <div className="ativar-notificacao">
-                        <p className="texto-confg">Ativar configurações</p>
+                        <p className="texto-confg">Ativar notificações</p>
                         <button className={`ativar ${ativo ? "ativo" : ""}`} onClick={() => setAtivo(!ativo)}>
                             <div className="bola"></div>
                         </button>
@@ -75,7 +75,7 @@ function Settings() {
                 </div>
 
                 <div className="desenvolvedores">
-                    <h2>Desenvolvedores:</h2>
+                    <h2>Desenvolvido por:</h2>
                     <p style={{ marginBottom: '40px' }}>Thiago Duarte - Lider Geral</p>
                     <p>Jairo de Cássio - Lider Dev. Front-End</p>
                     <p>Cauã Vitor - Dev. Front-End</p>

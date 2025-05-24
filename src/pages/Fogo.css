@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-p{
+p {
     font-family: 'Montserrat';
 }
 
@@ -9,72 +8,47 @@ p{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 500px;
 }
 
 .fogo-caixa {
     margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fogo-imagen img {
+    width: 60px;
+    height: 65px;
+    margin-top: -40px;
+    margin-left: -20px;
 }
 
 .fogo-imagen {
+    position: absolute;
+    left: var(--porcentagem);
     width: 70px;
     height: 75px;
-    display: block;
-    margin: 0 auto;
 }
 
-
-.fogo-apagado {
-    animation: none;
+.caixa-barra {
+    color: #fff;
+    height: 10px;
+    width: 90%;
+    position: relative;
 }
 
-.fogo-acesso {
-    animation: pulsar-fraco 1.2s infinite ease-in-out;
+.barra {
+
+    border: solid 1px #000;
+    height: 5px;
+    width: 105%;
+    border-radius: 40px;
+
 }
 
-.fogo-forte {
-    animation: pulsar-forte 1.9s infinite ease-in-out;
-}
-
-@keyframes pulsar-fraco {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    50% {
-        transform: scale(1.03);
-        opacity: 0.85;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes pulsar-forte {
-    0% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
-
-    25% {
-        transform: scale(1.08) rotate(-1deg);
-        opacity: 0.85;
-    }
-
-    50% {
-        transform: scale(1.1) rotate(1deg);
-        opacity: 0.9;
-    }
-
-    75% {
-        transform: scale(1.08) rotate(-1deg);
-        opacity: 0.85;
-    }
-
-    100% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
+.dias h3 {
+    float: right;
 }
