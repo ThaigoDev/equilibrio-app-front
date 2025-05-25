@@ -1,7 +1,6 @@
 import React from "react";
 import Equilibrio from "./Equilibrio"; // Ajuste o caminho caso necessário
 import Sentimentos from "./Sentimentos"; // Certifique-se de ajustar o caminho
-import Calendar from "./Calendar"; // Se estiver dentro de "components"
 
 import HabitosSaudaveis from "./HabitosSaudaveis"; // Componente de hábitos saudáveis
 
@@ -18,7 +17,6 @@ const Home = () => {
             <Sentimentos />
             <Fogo/>
             <HabitosSaudaveis />
-            <Calendar/>
         </div>
     );
 };
