@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./calendar.css";
+import "./calender.css";
 import Calendar from 'react-calendar';
 
 const Calender = () => {
