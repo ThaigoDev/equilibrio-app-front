@@ -4,10 +4,6 @@ import "./calender.css";
 import Calendar from 'react-calendar';
 
 const Calender = () => {
-    const navigate = useNavigate();
-    function MyCalendar() {
-        return <Calendar />;
-    }
         
   return (
 

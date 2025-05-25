@@ -8,12 +8,11 @@ import Calender from "./calender";
 const Home = () => {
     return (
         <div className="home-container">
-            {/* Componentes principais */}
+            {/* Componentes principais */}            
             <Equilibrio />
             <Sentimentos />
             <Fogo/>
-            <Calender/>
-
+            <Calender/> 
         </div>
     );
 };
