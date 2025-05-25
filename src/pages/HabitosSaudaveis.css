@@ -51,3 +51,15 @@
 .habito-item:last-child {
   margin-bottom: 0;
 }
+
+.habito-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.habito-icon {
+  width: 34px;
+  height: 34px;
+}
+
