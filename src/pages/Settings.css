@@ -38,8 +38,6 @@
   color: #000;
 }
 
-
-
 .botao-fechar-container {
   position: absolute;
   top: 125px;
@@ -76,7 +74,6 @@
   margin-right: 15px;
 }
 
-/* Texto "Equilíbrio" */
 .text {
   font-size: 24px;
   font-weight: bold;

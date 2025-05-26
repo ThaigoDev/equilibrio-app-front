@@ -15,8 +15,8 @@ const Home = () => {
         <div className="home-container">
             <Equilibrio />
             <Sentimentos />
-            <Fogo/>
             <HabitosSaudaveis />
+            <Fogo/>
         </div>
     );
 };

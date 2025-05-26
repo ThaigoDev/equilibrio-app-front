@@ -1,32 +1,43 @@
 import "./Fogo.css";
 
-function Fogo() { 
-    const cont = 100;
+function Fogo() {
+    const Ofensiva = 7;     // Meta de dias da semana
+    const feito = 5;        // Dias já feitos
+    const valor = (feito / Ofensiva) * 100;
 
     let imagemFogo;
-    let classeFogo;
+    let corBarra; 
 
-    if (cont >= 30) {
+    if (valor >= 100) {
         imagemFogo = "src/images/fogo forte.png";
-        classeFogo = "fogo-forte";
-    } else if (cont >= 10) {
+        corBarra = { backgroundColor: '#FF6347' };
+    } else if (valor >= 10) {
         imagemFogo = "src/images/fogo acesso.png";
-        classeFogo = "fogo-acesso";
+        corBarra = { backgroundColor: '#FF8C00' };
     } else {
         imagemFogo = "src/images/fogo apagado.png";
-        classeFogo = "fogo-apagado";
+        corBarra = { backgroundColor: '#A9A9A9' };
     }
 
     return (
         <div className="fogo-corpo">
-            <h1>ofensiva</h1>
+            <h1>Ofensiva</h1>
             <div className="fogo-caixa">
-                <h1>Dias Consecutivos {cont}</h1>
-                <img
-                    src={imagemFogo}
-                    alt="ícone de fogo"
-                    className={`fogo-imagen ${classeFogo}`}
-                />
+                <div className="caixa-barra">
+                    <div className="barra" style={corBarra}></div>
+                    <div
+                        className="fogo-imagen"
+                        style={{ '--porcentagem': `${valor}%` }}
+                    >
+                        <img
+                            src={imagemFogo}
+                            alt="ícone de fogo"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className="dias">
+                <h3>{feito}/{Ofensiva} dias</h3>
             </div>
         </div>
     );

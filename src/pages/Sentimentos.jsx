@@ -11,7 +11,7 @@ const Sentimentos = () => {
   return (
     <div className="sentimentos-container">
   
-    <h2 className="titulo">Como você está se sentindo?</h2>
+    
     <p className="subtitulo">Como você está se sentindo?</p>
   
   <div className="emojis">
