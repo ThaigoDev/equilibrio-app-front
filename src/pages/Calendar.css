@@ -24,9 +24,10 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 16px;
   font-family: 'Inter', sans-serif;
+  
 }
 
-.react-calendar__navigation__label {
+.react-calendar_navigation_label {
   font-size: 1.25rem;
   font-weight: 500;         
   text-transform: capitalize; 
@@ -56,7 +57,7 @@
 }
 
 /* Títulos dos dias da semana */
-.react-calendar__month-view__weekdays {
+.react-calendar_month-view_weekdays {
   text-transform: uppercase;
   font-size: 0.75rem;
   color: #6b7280;
@@ -64,7 +65,7 @@
   overflow: hidden;
 }
 
-.react-calendar__month-view__weekdays__weekday {
+.react-calendar_month-viewweekdays_weekday {
   text-align: center;
   padding: 4px 0;
 }
@@ -112,10 +113,10 @@
 }
 
 /* Botões de ano (se usar view="year") */
-.react-calendar__year-view .react-calendar__tile {
+.react-calendar_year-view .react-calendar_tile {
   text-transform: uppercase; 
   font-size: 0.6rem;
   height: 50px;
   max-width: 70px;
-  line-height: 50px;
+  line-height: 50px;
 }

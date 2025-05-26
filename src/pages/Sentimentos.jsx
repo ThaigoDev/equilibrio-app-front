@@ -12,7 +12,7 @@ const Sentimentos = () => {
     <div className="sentimentos-container">
   
     
-    <p className="subtitulo">Como você está se sentindo?</p>
+    <p className="subtitulo">Como você está se sentindo ?</p>
   
   <div className="emojis">
     <img className="emoji" src={emojiMuitoTriste} alt="Muito triste" />
