@@ -10,7 +10,7 @@
 
 .main {
   background: #ffffff;
-  height: 1089px;
+  height: 100%;
   position: relative;
 }
 .image-2 {
@@ -727,8 +727,8 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 400px;
+  height: 400px;
   position: relative;
 }
 .state-layer2 {
