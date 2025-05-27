@@ -1,0 +1,171 @@
+/* Login.module.css (coloque este arquivo em src/pages/) */
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Um cinza claro para o fundo */
+  padding: 20px;
+  font-family: 'Arial', sans-serif; /* Fonte genérica, substitua pela do seu app */
+}
+
+.loginBox {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.title {
+  color: #333; /* Cor escura para o título */
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555; /* Cor mais suave para labels */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box; /* Importante para o padding não aumentar o tamanho total */
+  font-size: 16px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.input:focus {
+  border-color: #007bff; /* Um azul para indicar foco, ajuste para sua paleta */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.inputError {
+  border-color: #dc3545; /* Vermelho para erros */
+}
+
+.inputError:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+}
+
+.errorMessage {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.options {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.link {
+  color: #007bff; /* Azul para links */
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #28a745; /* Verde para o botão principal - pensando em "equilibrio" */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.loginButton:hover {
+  background-color: #218838; /* Verde mais escuro no hover */
+}
+
+.loginButton:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.separator {
+  margin: 25px 0;
+  color: #6c757d;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.separator:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .25em;
+}
+
+.socialLogin {
+  display: flex;
+  flex-direction: column; /* Ou 'row' se preferir lado a lado */
+  gap: 10px; /* Espaço entre os botões sociais */
+  margin-bottom: 25px;
+}
+
+.socialButton {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espaço para ícones, se adicionados */
+}
+
+.socialButton:hover {
+  opacity: 0.9;
+}
+
+.googleButton {
+  background-color: #db4437; /* Cor do Google */
+}
+
+.facebookButton {
+  background-color: #3b5998; /* Cor do Facebook */
+}
+
+.signupLink {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
