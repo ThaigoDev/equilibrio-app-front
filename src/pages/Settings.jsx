@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Settings.css";
-import "./Equilibrio.css";
+import "./Equilibrio.css"; // Se este CSS for relevante para Settings, mantenha.
 
-function Settings() {
+// Adicione onLogout como uma prop aqui
+function Settings({ onLogout }) {
     const navigate = useNavigate();
-
     const [ativo, setAtivo] = useState(false);
-
     const [dados, setDados] = useState({
         horario: "20:00",
         copos: "8 copos",
@@ -15,7 +14,6 @@ function Settings() {
         peso: "70,5kg",
         ofensiva: "7 dias"
     });
-
     const [campoSelecionado, setCampoSelecionado] = useState(null);
     const [novoValor, setNovoValor] = useState("");
 
@@ -48,7 +46,6 @@ function Settings() {
                     <span className="text">Equilíbrio</span>
                 </div>
 
-                  {/* Botão de fechar que volta pra Home */}
                 <div className="botao-fechar-container">
                     <div
                         className="botao-fechar"
@@ -74,22 +71,43 @@ function Settings() {
                     ))}
                 </div>
 
+                {/* Seção do Botão de Logout */}
+                <div className="logout-section" style={{ marginTop: '30px', marginBottom: '30px', textAlign: 'center', borderTop: '1px solid #eee', paddingTop: '30px' }}>
+                    <button 
+                        onClick={onLogout} // Chama a função de logout recebida via props
+                        className="botao-sair-settings" // Você pode estilizar esta classe no seu Settings.css
+                        style={{ 
+                            padding: '12px 25px', 
+                            backgroundColor: '#dc3545', 
+                            color: 'white', 
+                            border: 'none', 
+                            borderRadius: '5px', 
+                            cursor: 'pointer', 
+                            fontSize: '16px',
+                            fontWeight: 'bold'
+                        }}
+                    >
+                        Sair (Logout)
+                    </button>
+                </div>
+
                 <div className="desenvolvedores">
                     <h2>Desenvolvido por:</h2>
+                    {/* ...lista de desenvolvedores... */}
                     <p style={{ marginBottom: '40px' }}>Thiago Duarte - Lider Geral</p>
-                    <p>Jairo de Cássio - Lider Dev. Front-End</p>
-                    <p>Cauã Vitor - Dev. Front-End</p>
-                    <p>Lucas Henrique - Dev. Front-End</p>
-                    <p>Otávio Herdy - Dev. Front-End</p>
-                    <p>Timoteo Teixeira - Dev. Front-End</p>
-                    <p style={{ marginBottom: '40px' }}>Ygor - Dev. Front-End</p>
-                    <p>Thiago Duarte - Lider Dev.back-end</p>
-                    <p>Cauam Algusto - Dev.back-end</p>
-                    <p>Luciano Junior - Dev.back-end</p>
-                    <p>Marco túlio - Dev.back-end</p>
-                    <p style={{ marginBottom: '40px' }}>Rafael Florindo - Dev.back-end</p>
-                    <p style={{ marginBottom: '40px' }}>Matheus Henringer - Documentação</p>
-                    <p>Otávio Herdy - UX/UI</p>
+                    <p>Jairo de Cássio - Lider Dev. Front-End</p>
+                    <p>Cauã Vitor - Dev. Front-End</p>
+                    <p>Lucas Henrique - Dev. Front-End</p>
+                    <p>Otávio Herdy - Dev. Front-End</p>
+                    <p>Timoteo Teixeira - Dev. Front-End</p>
+                    <p style={{ marginBottom: '40px' }}>Ygor - Dev. Front-End</p>
+                    <p>Thiago Duarte - Lider Dev.back-end</p>
+                    <p>Cauam Algusto - Dev.back-end</p>
+                    <p>Luciano Junior - Dev.back-end</p>
+                    <p>Marco túlio - Dev.back-end</p>
+                    <p style={{ marginBottom: '40px' }}>Rafael Florindo - Dev.back-end</p>
+                    <p style={{ marginBottom: '40px' }}>Matheus Henringer - Documentação</p>
+                    <p>Otávio Herdy - UX/UI</p>
                 </div>
             </div>
 
