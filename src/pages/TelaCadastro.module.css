@@ -1,0 +1,127 @@
+/* src/pages/TelaCadastro.module.css */
+.cadastroContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.cadastroBox {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px; /* Um pouco mais largo para mais campos */
+  text-align: center;
+}
+
+.title {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.inputError {
+  border-color: #dc3545;
+}
+
+.inputError:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+}
+
+.errorMessage, .errorMessageGlobal {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.errorMessageGlobal { /* Para erros genéricos do formulário */
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.successMessage {
+  color: #28a745; /* Verde para sucesso */
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #e9f7ef;
+  border: 1px solid #b8e0c9;
+  border-radius: 6px;
+}
+
+.cadastroButton {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #007bff; /* Azul para o botão de cadastro */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 10px; /* Adiciona um espaço acima do botão */
+}
+
+.cadastroButton:hover {
+  background-color: #0056b3;
+}
+
+.cadastroButton:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.loginLink {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #333;
+}
+
+.link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
