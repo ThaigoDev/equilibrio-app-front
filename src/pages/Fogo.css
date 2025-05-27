@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-p {
+* {
     font-family: 'Montserrat';
 }
 
@@ -10,13 +10,18 @@ p {
     justify-content: center;
     width: 500px;
 }
+.fogo-corpo h1{
+    font-size: 25px;
+    margin-left: 8%;
+}
 
 .fogo-caixa {
-    margin-left: 50px;
+    margin-left: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 88%;
 }
 
 .fogo-imagen img {
@@ -51,4 +56,5 @@ p {
 
 .dias h3 {
     float: right;
+    margin-right: 30px;
 }
