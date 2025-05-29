@@ -94,20 +94,18 @@ function Settings({ onLogout }) {
                 <div className="desenvolvedores">
                     <h2>Desenvolvido por:</h2>
                     {/* ...lista de desenvolvedores... */}
-                    <p style={{ marginBottom: '40px' }}>Thiago Duarte - Lider Geral</p>
-                    <p>Jairo de Cássio - Lider Dev. Front-End</p>
-                    <p>Cauã Vitor - Dev. Front-End</p>
-                    <p>Lucas Henrique - Dev. Front-End</p>
-                    <p>Otávio Herdy - Dev. Front-End</p>
-                    <p>Timoteo Teixeira - Dev. Front-End</p>
-                    <p style={{ marginBottom: '40px' }}>Ygor - Dev. Front-End</p>
-                    <p>Thiago Duarte - Lider Dev.back-end</p>
-                    <p>Cauam Algusto - Dev.back-end</p>
-                    <p>Luciano Junior - Dev.back-end</p>
-                    <p>Marco túlio - Dev.back-end</p>
-                    <p style={{ marginBottom: '40px' }}>Rafael Florindo - Dev.back-end</p>
-                    <p style={{ marginBottom: '40px' }}>Matheus Henringer - Documentação</p>
-                    <p>Otávio Herdy - UX/UI</p>
+                    <p>Thiago Duarte - Lider Geral / Lider Dev.back-end.</p>
+                    <p>Jairo de Cássio - Lider Dev. Front-End.</p>
+                    <p>Cauã Vitor - Dev. Front-End.</p>
+                    <p>Lucas Henrique - Dev. Front-End.</p>
+                    <p>Timoteo Teixeira - Dev. Front-End.</p>
+                    <p>Ygor - Dev. Front-End.</p>
+                    <p>Cauan Algusto - Dev.back-end.</p>
+                    <p>Luciano Junior - Dev.back-end.</p>
+                    <p>Marco túlio - Dev.back-end.</p>
+                    <p>Rafael Florindo - Dev.back-end.</p>
+                    <p>Matheus Henringer - Documentação.</p>
+                    <p>Otávio Herdy - UX/UI / Dev. Front-End.</p>
                 </div>
             </div>
 

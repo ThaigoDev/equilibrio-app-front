@@ -101,11 +101,11 @@
 .configuracoes {
   border-bottom: solid 1px black;
   padding-bottom: 10px;
-  margin-top: 50px;
+  margin-top: 5px;
 }
 
 .ativar-notificacao {
-  margin-top: 140px;
+  margin-top: 10px;
   width: 100%;
   display: flex;
   align-items: center;
