@@ -27,24 +27,7 @@ const Home = () => {
             {/* Adicione o botão de configurações aqui.
                 Você pode estilizar este botão com CSS em Home.css para posicioná-lo.
                 Por exemplo, no canto superior direito. */}
-            <button
-                onClick={handleSettingsRedirect}
-                style={{
-                    position: 'absolute', // Exemplo de estilo para posicionar
-                    top: '20px',
-                    right: '20px',
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: '28px', // Ajuste o tamanho do ícone
-                    color: '#333',
-                    zIndex: 10 // Garante que esteja acima de outros elementos se necessário
-                }}
-                title="Configurações"
-            >
-                ⚙️ {/* Ícone de engrenagem Unicode. Se tiver uma biblioteca de ícones (Font Awesome, Material-UI), use o ícone dela aqui. */}
-            </button>
-
+      
             <Equilibrio />
             <Sentimentos />
             <HabitosSaudaveis />
