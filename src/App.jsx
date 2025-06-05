@@ -32,7 +32,7 @@ const ProtectedRoute = ({ isAuthenticated, children }) => {
   console.log("PROTECTEDROUTE: Verificando autenticação. isAuthenticated:", isAuthenticated);
   if (!isAuthenticated) {
     console.log("PROTECTEDROUTE: Não autenticado, redirecionando para /login");
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/home" replace />;
   }
   console.log("PROTECTEDROUTE: Autenticado, renderizando Outlet");
   return <Outlet />;
@@ -75,14 +75,14 @@ function App() {
           path="/cadastro"
           element={ authToken ? (<Navigate to="/" replace />) : (<TelaCadastro />) }
         />
-        <Route path="/testhome" element={<Home />} /> {/* Se ainda estiver usando para testes */}
+        <Route path="/home" element={<Home />} /> {/* Se ainda estiver usando para testes */}
 
         {/* Agrupador de Rotas Protegidas */}
-        <Route element={<ProtectedRoute isAuthenticated={!!authToken} />}>
+        <Route element={<ProtectedRoute  />}>
           {/* SharedLayout não precisa mais da prop onLogout aqui, se ela não for usada por ele */}
           <Route element={<SharedLayout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
+           
             
             {/* MODIFICADO: Passando handleLogout para o componente Settings */}
             <Route path="/settings" element={<Settings onLogout={handleLogout} />} /> 
