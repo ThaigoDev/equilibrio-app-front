@@ -19,7 +19,7 @@ const Home = () => {
 
     const handleSettingsRedirect = () => {
         console.log("Botão de Configurações da Home clicado! Redirecionando para /Settings");
-        navigate("/Settings"); // <--- Redireciona para a rota /Settings (com S maiúsculo)
+        navigate("/settings"); // <--- Redireciona para a rota /Settings (com S maiúsculo)
     };
 
     return (
