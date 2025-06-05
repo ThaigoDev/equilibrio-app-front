@@ -1,11 +1,10 @@
 // src/pages/Login.jsx
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // useNavigate pode ser útil após o login
-import axios from 'axios'; // Importando o Axios
-import styles from './Login.module.css'; // Usaremos um novo CSS module
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import styles from './Login.module.css'; // Ou o nome correto do seu CSS module
 
-// Mock para o styles, já que o conteúdo de Login.module.css não foi fornecido
-// Em um projeto real, este objeto seria importado do arquivo CSS Module.
+// Mock styles (como antes)
 const mockStyles = {
   loginContainer: 'loginContainer',
   loginBox: 'loginBox',
@@ -13,7 +12,7 @@ const mockStyles = {
   inputGroup: 'inputGroup',
   label: 'label',
   input: 'input',
-  inputError: 'inputError', // Assumindo que pode haver um inputError também
+  inputError: 'inputError',
   errorMessage: 'errorMessage',
   options: 'options',
   link: 'link',
@@ -24,21 +23,20 @@ const mockStyles = {
   googleButton: 'googleButton',
   facebookButton: 'facebookButton',
   signupLink: 'signupLink',
-  errorMessageGlobal: 'errorMessageGlobal' // Adicionado para erros genéricos
+  errorMessageGlobal: 'errorMessageGlobal',
+  successMessage: 'successMessage'
 };
 
-// A prop onLoginSuccess ainda é aceita, mas não será usada no handleLoginSubmit
 const Login = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [genericError, setGenericError] = useState(''); // Para erros da API
-  const [successMessage, setSuccessMessage] = useState(''); // Para mensagem de sucesso
+  const [genericError, setGenericError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate(); // Para redirecionar após o login, se necessário
+  const navigate = useNavigate();
 
-  // Use o styles importado se estiver disponível, senão use o mockStyles
   const currentStyles = (typeof styles !== 'undefined' && Object.keys(styles).length > 0) ? styles : mockStyles;
 
   const validateForm = () => {
@@ -46,8 +44,7 @@ const Login = ({ onLoginSuccess }) => {
     setEmailError('');
     setPasswordError('');
     setGenericError('');
-    setSuccessMessage(''); // Limpa mensagem de sucesso ao validar
-
+    setSuccessMessage('');
     if (!email) {
       setEmailError('O e-mail é obrigatório.');
       isValid = false;
@@ -55,7 +52,6 @@ const Login = ({ onLoginSuccess }) => {
       setEmailError('Por favor, insira um e-mail válido.');
       isValid = false;
     }
-
     if (!password) {
       setPasswordError('A senha é obrigatória.');
       isValid = false;
@@ -63,7 +59,6 @@ const Login = ({ onLoginSuccess }) => {
       setPasswordError('A senha deve ter pelo menos 6 caracteres.');
       isValid = false;
     }
-
     return isValid;
   };
 
@@ -77,7 +72,6 @@ const Login = ({ onLoginSuccess }) => {
     setIsLoading(true);
     setGenericError('');
     setSuccessMessage('');
-    console.log('Tentando login com:', email, password);
 
     const loginData = {
       email: email,
@@ -85,48 +79,56 @@ const Login = ({ onLoginSuccess }) => {
     };
 
     try {
-      // Fazendo a requisição POST com Axios para o endpoint de login
       const response = await axios.post('https://equilibrio-api-node.onrender.com/api/auth/login', loginData);
+      console.log('Resposta da API de Login:', response.data); // Mantenha para debug
 
-      console.log('Resposta da API de Login:', response.data);
-      // Apenas loga a resposta. Nenhuma manipulação de token ou callback onLoginSuccess.
-      // Você pode adicionar uma mensagem de sucesso para o usuário se desejar.
-      setSuccessMessage(response.data.message || 'Login realizado com sucesso!'); // Usa a mensagem da API ou uma padrão
+      // Ajustado para a estrutura de resposta: {status: 'sucess', profile: {…}}
+      const apiStatus = response.data.status;
+      const userProfile = response.data.profile;
 
-      // Limpar campos após sucesso (opcional, dependendo do fluxo desejado)
-      // setEmail('');
-      // setPassword('');
+      if (apiStatus === 'sucess' && userProfile) {
+        setSuccessMessage(response.data.status === 'sucess' ? 'Login realizado com sucesso! Redirecionando...' : (response.data.status || 'Login bem-sucedido! Redirecionando...'));
+        
+        // Opcional: você pode querer chamar onLoginSuccess aqui se precisar passar dados do perfil para o App.js
+        // if (onLoginSuccess) {
+        //   onLoginSuccess(userProfile); // Passa o perfil do usuário
+        // }
 
-      // Exemplo: Redirecionar para um dashboard após o login
-      // setTimeout(() => navigate('/dashboard'), 2000); // Adiciona um pequeno delay para o usuário ver a mensagem
+        setEmail('');
+        setPassword('');
+
+        setTimeout(() => {
+          navigate('/'); // Redireciona para a página principal (home)
+        }, 1500);
+
+      } else {
+        console.error("Login falhou ou perfil não encontrado na resposta da API:", response.data);
+        // Se a API envia uma mensagem de erro em response.data.message ou response.data.status
+        const errorMessage = response.data.message || response.data.status || "Resposta inesperada do servidor. Tente novamente.";
+        setGenericError(errorMessage);
+        setPassword('');
+      }
 
     } catch (error) {
       console.error('Erro no login:', error);
       if (error.response && error.response.data && error.response.data.message) {
         setGenericError(error.response.data.message);
+      } else if (error.response && error.response.data && error.response.data.status) {
+        // Adicionado para capturar status de erro do corpo da resposta, se message não existir
+        setGenericError(error.response.data.status);
       } else if (error.request) {
-        setGenericError('Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.');
+        setGenericError('Não foi possível conectar ao servidor. Verifique sua conexão.');
       } else {
-        setGenericError('Ocorreu um erro ao tentar fazer login. Tente novamente mais tarde.');
+        setGenericError('Ocorreu um erro ao tentar fazer login. Tente novamente.');
       }
-      // Limpar apenas o campo de senha em caso de erro pode ser uma boa prática
       setPassword('');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleFacebookLogin = () => {
-    console.log('Login via Facebook');
-    // Implementação do login via Facebook (requer SDK)
-    // Se implementado, também deveria chamar onLoginSuccess (ou lógica similar)
-  };
-
-  const handleGoogleLogin = () => {
-    console.log('Login via Google');
-    // Implementação do login via Google (requer SDK/biblioteca)
-    // Se implementado, também deveria chamar onLoginSuccess (ou lógica similar)
-  };
+  const handleFacebookLogin = () => { /* Lógica para login com Facebook */ };
+  const handleGoogleLogin = () => { /* Lógica para login com Google */ };
 
   return (
     <div className={currentStyles.loginContainer}>
@@ -135,73 +137,41 @@ const Login = ({ onLoginSuccess }) => {
 
         {genericError && <p className={currentStyles.errorMessageGlobal} style={{textAlign: 'center', marginBottom: '1rem', color: 'red'}}>{genericError}</p>}
         {successMessage && <p className={currentStyles.successMessage} style={{textAlign: 'center', marginBottom: '1rem', color: 'green'}}>{successMessage}</p>}
-
-
+        
         <form onSubmit={handleLoginSubmit} noValidate>
           <div className={currentStyles.inputGroup}>
             <label htmlFor="email" className={currentStyles.label}>E-mail</label>
             <input
-              type="email"
-              id="email"
-              placeholder="seuemail@exemplo.com"
-              value={email}
+              type="email" id="email" placeholder="seuemail@exemplo.com" value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={`${currentStyles.input} ${emailError ? currentStyles.inputError : ''}`}
-              aria-describedby="emailError"
               required
             />
             {emailError && <p id="emailError" className={currentStyles.errorMessage}>{emailError}</p>}
           </div>
-
           <div className={currentStyles.inputGroup}>
             <label htmlFor="password" className={currentStyles.label}>Senha</label>
             <input
-              type="password"
-              id="password"
-              placeholder="Sua senha"
-              value={password}
+              type="password" id="password" placeholder="Sua senha" value={password}
               onChange={(e) => setPassword(e.target.value)}
               className={`${currentStyles.input} ${passwordError ? currentStyles.inputError : ''}`}
-              aria-describedby="passwordError"
               required
             />
             {passwordError && <p id="passwordError" className={currentStyles.errorMessage}>{passwordError}</p>}
           </div>
-
           <div className={currentStyles.options}>
             <Link to="/esqueceu-senha" className={currentStyles.link}>Esqueceu sua senha?</Link>
           </div>
-
-          <button
-            type="submit"
-            className={currentStyles.loginButton}
-            disabled={isLoading}
-          >
+          <button type="submit" className={currentStyles.loginButton} disabled={isLoading}>
             {isLoading ? 'Entrando...' : 'Entrar'}
           </button>
         </form>
 
         <p className={currentStyles.separator}>ou entre com</p>
-
         <div className={currentStyles.socialLogin}>
-          <button
-            onClick={handleGoogleLogin}
-            className={`${currentStyles.socialButton} ${currentStyles.googleButton}`}
-            type="button"
-            aria-label="Login com Google"
-          >
-            Google
-          </button>
-          <button
-            onClick={handleFacebookLogin}
-            className={`${currentStyles.socialButton} ${currentStyles.facebookButton}`}
-            type="button"
-            aria-label="Login com Facebook"
-          >
-            Facebook
-          </button>
+          <button onClick={handleGoogleLogin} className={`${currentStyles.socialButton} ${currentStyles.googleButton}`}>Google</button>
+          <button onClick={handleFacebookLogin} className={`${currentStyles.socialButton} ${currentStyles.facebookButton}`}>Facebook</button>
         </div>
-
         <div className={currentStyles.signupLink}>
           <p>Não tem uma conta? <Link to="/cadastro" className={currentStyles.link}>Cadastre-se</Link></p>
         </div>
@@ -210,4 +180,4 @@ const Login = ({ onLoginSuccess }) => {
   );
 };
 
-export default Login;
+export default Login; 
