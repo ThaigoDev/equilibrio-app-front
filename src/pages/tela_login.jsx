@@ -292,15 +292,17 @@ const Login = ({ onLoginSuccess }) => {
 
             const apiStatus = response.data.status;
             const userProfile = response.data.profile;
-            const apiErrors = response.data.errors; // Para erros de validação do backend
+            const apiErrors = response.data.errors;
 
             // Verifica se o login foi bem-sucedido (status "sucess" e perfil de usuário)
             if (apiStatus === 'sucess' && userProfile) {
                 setSuccessMessage('Login realizado com sucesso! Redirecionando...');
                 
                 // Chama a função onLoginSuccess passada via props.
-                if (onLoginSuccess) {
-                    onLoginSuccess(userProfile); // userProfile ainda é passado para a prop onLoginSuccess
+                if (onLoginSuccess) { 
+                
+                    onLoginSuccess(userProfile.id);
+                     localStorage.setItem('equilibrioAuthToken', userProfile._id) // userProfile ainda é passado para a prop onLoginSuccess
                 }
 
                 // Redireciona para a página home após um pequeno atraso (para exibir a mensagem de sucesso)

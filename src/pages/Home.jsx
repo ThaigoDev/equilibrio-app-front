@@ -1,6 +1,5 @@
 // src/pages/Home.jsx
 import React from "react";
-import { useNavigate } from "react-router-dom"; // <--- Importe useNavigate
 
 import Equilibrio from "./Equilibrio";
 import Sentimentos from "./Sentimentos";
@@ -15,12 +14,8 @@ import "./Home.css"; // Certifique-se que este arquivo existe
 
 const Home = () => {
     console.log("HOME ORIGINAL SENDO RENDERIZADO"); // Adicione este log
-    const navigate = useNavigate(); // <--- Inicialize useNavigate
 
-    const handleSettingsRedirect = () => {
-        console.log("Botão de Configurações da Home clicado! Redirecionando para /Settings");
-        navigate("/settings"); // <--- Redireciona para a rota /Settings (com S maiúsculo)
-    };
+
 
     return (
         <div className="home-container">
