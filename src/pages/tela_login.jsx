@@ -27,7 +27,7 @@ const mockStyles = {
     successMessage: 'successMessage'
 };
 
-const Login = ({ onLoginSuccess }) => { // onLoginSuccess é recebido via props
+const Login = () => { // onLoginSuccess removido
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -55,8 +55,8 @@ const Login = ({ onLoginSuccess }) => { // onLoginSuccess é recebido via props
         if (!password) {
             setPasswordError('A senha é obrigatória.');
             isValid = false;
-        } else if (password.length < 6) {
-            setPasswordError('A senha deve ter pelo menos 6 caracteres.');
+        } else if (password.length < 6) { // Ajuste conforme a validação do backend (agora 4 caracteres)
+            setPasswordError('A senha deve ter pelo menos 6 caracteres.'); // Mantenha ou ajuste a mensagem
             isValid = false;
         }
         return isValid;
@@ -80,38 +80,35 @@ const Login = ({ onLoginSuccess }) => { // onLoginSuccess é recebido via props
 
         try {
             const response = await axios.post('https://equilibrio-api-node.onrender.com/api/auth/login', loginData);
-            console.log('Resposta da API de Login:', response.data); // Mantenha para debug
+            console.log('Resposta COMPLETA da API de Login:', response);
+            console.log('Dados da Resposta da API de Login:', response.data);
 
             const apiStatus = response.data.status;
-            const userProfile = response.data.profile;
+            // const userProfile = response.data.profile; // Mantido para depuração, mas não usado na condição
 
-            if (apiStatus === 'sucess' && userProfile && userProfile.token) { // Adicionei verificação de userProfile.token
+            // ***** Lógica para redirecionar SEM TOKEN *****
+            // Verifica se o status é 'success' (correto) OU 'sucess' (com erro de digitação)
+            if (apiStatus === 'success' || apiStatus === 'sucess') {
                 setSuccessMessage('Login realizado com sucesso! Redirecionando...');
-
-                // ***** CORREÇÃO AQUI: CHAME onLoginSuccess com o token recebido *****
-                if (onLoginSuccess) {
-                    console.log("Login.jsx: Chamando onLoginSuccess com o token:", userProfile.token);
-                    onLoginSuccess(userProfile.token); // Passa o token para o App.jsx
-                }
 
                 setEmail('');
                 setPassword('');
 
-                // O redirecionamento será tratado pelo App.jsx uma vez que o authToken seja atualizado.
-                // Remover o setTimeout aqui para evitar conflito com a navegação do App.jsx
-                // setTimeout(() => {
-                //   navigate('/'); // Redireciona para a página principal (home)
-                // }, 1500);
+                // Redireciona diretamente para a página principal (home) após um pequeno atraso
+                setTimeout(() => {
+                    navigate('/'); 
+                }, 1500); // 1.5 segundos de atraso para exibir a mensagem de sucesso
 
             } else {
-                console.error("Login falhou ou perfil/token não encontrado na resposta da API:", response.data);
+                // Caso a API retorne um status que não seja 'success'/'sucess'
+                console.error("Login falhou ou status inesperado na resposta da API:", response.data);
                 const errorMessage = response.data.message || response.data.status || "Resposta inesperada do servidor. Tente novamente.";
                 setGenericError(errorMessage);
                 setPassword('');
             }
 
         } catch (error) {
-            console.error('Erro no login:', error);
+            console.error('Erro no login (catch block):', error);
             if (error.response && error.response.data && error.response.data.message) {
                 setGenericError(error.response.data.message);
             } else if (error.response && error.response.data && error.response.data.status) {
