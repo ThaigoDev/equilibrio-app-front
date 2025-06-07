@@ -1,8 +1,8 @@
 import "./Fogo.css";
 
 function Fogo() {
-    const Ofensiva = 7;     // Meta de dias da semana
-    const feito = 5;        // Dias já feitos
+    const Ofensiva = 7;     // Meta de dias da semana(deve ser mudado nas configurações)
+    const feito = 5;        // Dias já feitos(deve atualizar sempre que o usuário completar as metas do dia)
     const valor = (feito / Ofensiva) * 100;
 
     let imagemFogo;
