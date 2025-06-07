@@ -31,7 +31,7 @@ const ProtectedRoute = ({ isAuthenticated }) => { // Remova 'children' se não e
     console.log("PROTECTEDROUTE: Verificando autenticação. isAuthenticated:", isAuthenticated);
     if (!isAuthenticated) {
         console.log("PROTECTEDROUTE: Não autenticado, redirecionando para /login");
-        return <Navigate to="/login" replace />; // CORRIGIDO: Redireciona para /login
+        
     }
     console.log("PROTECTEDROUTE: Autenticado, renderizando Outlet");
     return <Outlet />;
