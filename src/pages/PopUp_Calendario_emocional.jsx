@@ -2,12 +2,16 @@ import "./PopUp_Calendario_emocional.css"
 import { useNavigate } from 'react-router-dom';
 
 
-function PopUp_Calendario_emocional() {
+function PopUp_Calendario_emocional({ date, onClose }) {
     const navigate = useNavigate();
 
     const handleClose = () => {
-        navigate('/');
+        onClose();
     };
+
+    const formattedDate = date
+        ? new Date(date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })
+        : 'Data não disponível';
 
     return (
         <div className="popup-container">
@@ -17,7 +21,7 @@ function PopUp_Calendario_emocional() {
                 <div className="header-left">
 
                     <div className="emoji">😊</div>
-                    <h3>  08 maio, 2025</h3>
+                    <h3>{formattedDate}</h3>
 
                 </div>
 
@@ -28,7 +32,7 @@ function PopUp_Calendario_emocional() {
 
 
             <div className="popup-note">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque nulla facere maxime architecto illo debitis ea, 
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque nulla facere maxime architecto illo debitis ea,
                 fuga nostrum saepe consequatur quos eius, officiis quidem laborum tempora omnis. Voluptas, quidem nihil.
             </div>
 
