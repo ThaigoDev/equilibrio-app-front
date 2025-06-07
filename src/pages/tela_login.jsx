@@ -6,178 +6,178 @@ import styles from './Login.module.css'; // Ou o nome correto do seu CSS module
 
 // Mock styles (como antes)
 const mockStyles = {
-  loginContainer: 'loginContainer',
-  loginBox: 'loginBox',
-  title: 'title',
-  inputGroup: 'inputGroup',
-  label: 'label',
-  input: 'input',
-  inputError: 'inputError',
-  errorMessage: 'errorMessage',
-  options: 'options',
-  link: 'link',
-  loginButton: 'loginButton',
-  separator: 'separator',
-  socialLogin: 'socialLogin',
-  socialButton: 'socialButton',
-  googleButton: 'googleButton',
-  facebookButton: 'facebookButton',
-  signupLink: 'signupLink',
-  errorMessageGlobal: 'errorMessageGlobal',
-  successMessage: 'successMessage'
+    loginContainer: 'loginContainer',
+    loginBox: 'loginBox',
+    title: 'title',
+    inputGroup: 'inputGroup',
+    label: 'label',
+    input: 'input',
+    inputError: 'inputError',
+    errorMessage: 'errorMessage',
+    options: 'options',
+    link: 'link',
+    loginButton: 'loginButton',
+    separator: 'separator',
+    socialLogin: 'socialLogin',
+    socialButton: 'socialButton',
+    googleButton: 'googleButton',
+    facebookButton: 'facebookButton',
+    signupLink: 'signupLink',
+    errorMessageGlobal: 'errorMessageGlobal',
+    successMessage: 'successMessage'
 };
 
-const Login = ({ onLoginSuccess }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [genericError, setGenericError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+const Login = ({ onLoginSuccess }) => { // onLoginSuccess é recebido via props
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [genericError, setGenericError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
-  const currentStyles = (typeof styles !== 'undefined' && Object.keys(styles).length > 0) ? styles : mockStyles;
+    const currentStyles = (typeof styles !== 'undefined' && Object.keys(styles).length > 0) ? styles : mockStyles;
 
-  const validateForm = () => {
-    let isValid = true;
-    setEmailError('');
-    setPasswordError('');
-    setGenericError('');
-    setSuccessMessage('');
-    if (!email) {
-      setEmailError('O e-mail é obrigatório.');
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      setEmailError('Por favor, insira um e-mail válido.');
-      isValid = false;
-    }
-    if (!password) {
-      setPasswordError('A senha é obrigatória.');
-      isValid = false;
-    } else if (password.length < 6) {
-      setPasswordError('A senha deve ter pelo menos 6 caracteres.');
-      isValid = false;
-    }
-    return isValid;
-  };
-
-  const handleLoginSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsLoading(true);
-    setGenericError('');
-    setSuccessMessage('');
-
-    const loginData = {
-      email: email,
-      password: password,
+    const validateForm = () => {
+        let isValid = true;
+        setEmailError('');
+        setPasswordError('');
+        setGenericError('');
+        setSuccessMessage('');
+        if (!email) {
+            setEmailError('O e-mail é obrigatório.');
+            isValid = false;
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            setEmailError('Por favor, insira um e-mail válido.');
+            isValid = false;
+        }
+        if (!password) {
+            setPasswordError('A senha é obrigatória.');
+            isValid = false;
+        } else if (password.length < 6) {
+            setPasswordError('A senha deve ter pelo menos 6 caracteres.');
+            isValid = false;
+        }
+        return isValid;
     };
 
-    try {
-      const response = await axios.post('https://equilibrio-api-node.onrender.com/api/auth/login', loginData);
-      console.log('Resposta da API de Login:', response.data); // Mantenha para debug
+    const handleLoginSubmit = async (event) => {
+        event.preventDefault();
 
-      // Ajustado para a estrutura de resposta: {status: 'sucess', profile: {…}}
-      const apiStatus = response.data.status;
-      const userProfile = response.data.profile;
+        if (!validateForm()) {
+            return;
+        }
 
-      if (apiStatus === 'sucess' && userProfile) {
-        setSuccessMessage(response.data.status === 'sucess' ? 'Login realizado com sucesso! Redirecionando...' : (response.data.status || 'Login bem-sucedido! Redirecionando...'));
-        
-        // Opcional: você pode querer chamar onLoginSuccess aqui se precisar passar dados do perfil para o App.js
-        // if (onLoginSuccess) {
-        //   onLoginSuccess(userProfile); // Passa o perfil do usuário
-        // }
+        setIsLoading(true);
+        setGenericError('');
+        setSuccessMessage('');
 
-        setEmail('');
-        setPassword('');
+        const loginData = {
+            email: email,
+            password: password,
+        };
 
-        setTimeout(() => {
-          navigate('/'); // Redireciona para a página principal (home)
-        }, 1500);
+        try {
+            const response = await axios.post('https://equilibrio-api-node.onrender.com/api/auth/login', loginData);
+            console.log('Resposta da API de Login:', response.data); // Mantenha para debug
 
-      } else {
-        console.error("Login falhou ou perfil não encontrado na resposta da API:", response.data);
-        // Se a API envia uma mensagem de erro em response.data.message ou response.data.status
-        const errorMessage = response.data.message || response.data.status || "Resposta inesperada do servidor. Tente novamente.";
-        setGenericError(errorMessage);
-        setPassword('');
-      }
+            const apiStatus = response.data.status;
+            const userProfile = response.data.profile;
 
-    } catch (error) {
-      console.error('Erro no login:', error);
-      if (error.response && error.response.data && error.response.data.message) {
-        setGenericError(error.response.data.message);
-      } else if (error.response && error.response.data && error.response.data.status) {
-        // Adicionado para capturar status de erro do corpo da resposta, se message não existir
-        setGenericError(error.response.data.status);
-      } else if (error.request) {
-        setGenericError('Não foi possível conectar ao servidor. Verifique sua conexão.');
-      } else {
-        setGenericError('Ocorreu um erro ao tentar fazer login. Tente novamente.');
-      }
-      setPassword('');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+            if (apiStatus === 'sucess' && userProfile && userProfile.token) { // Adicionei verificação de userProfile.token
+                setSuccessMessage('Login realizado com sucesso! Redirecionando...');
 
-  const handleFacebookLogin = () => { /* Lógica para login com Facebook */ };
-  const handleGoogleLogin = () => { /* Lógica para login com Google */ };
+                // ***** CORREÇÃO AQUI: CHAME onLoginSuccess com o token recebido *****
+                if (onLoginSuccess) {
+                    console.log("Login.jsx: Chamando onLoginSuccess com o token:", userProfile.token);
+                    onLoginSuccess(userProfile.token); // Passa o token para o App.jsx
+                }
 
-  return (
-    <div className={currentStyles.loginContainer}>
-      <div className={currentStyles.loginBox}>
-        <h2 className={currentStyles.title}>Login Equilibrio</h2>
+                setEmail('');
+                setPassword('');
 
-        {genericError && <p className={currentStyles.errorMessageGlobal} style={{textAlign: 'center', marginBottom: '1rem', color: 'red'}}>{genericError}</p>}
-        {successMessage && <p className={currentStyles.successMessage} style={{textAlign: 'center', marginBottom: '1rem', color: 'green'}}>{successMessage}</p>}
-        
-        <form onSubmit={handleLoginSubmit} noValidate>
-          <div className={currentStyles.inputGroup}>
-            <label htmlFor="email" className={currentStyles.label}>E-mail</label>
-            <input
-              type="email" id="email" placeholder="seuemail@exemplo.com" value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className={`${currentStyles.input} ${emailError ? currentStyles.inputError : ''}`}
-              required
-            />
-            {emailError && <p id="emailError" className={currentStyles.errorMessage}>{emailError}</p>}
-          </div>
-          <div className={currentStyles.inputGroup}>
-            <label htmlFor="password" className={currentStyles.label}>Senha</label>
-            <input
-              type="password" id="password" placeholder="Sua senha" value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className={`${currentStyles.input} ${passwordError ? currentStyles.inputError : ''}`}
-              required
-            />
-            {passwordError && <p id="passwordError" className={currentStyles.errorMessage}>{passwordError}</p>}
-          </div>
-          <div className={currentStyles.options}>
-            <Link to="/esqueceu-senha" className={currentStyles.link}>Esqueceu sua senha?</Link>
-          </div>
-          <button type="submit" className={currentStyles.loginButton} disabled={isLoading}>
-            {isLoading ? 'Entrando...' : 'Entrar'}
-          </button>
-        </form>
+                // O redirecionamento será tratado pelo App.jsx uma vez que o authToken seja atualizado.
+                // Remover o setTimeout aqui para evitar conflito com a navegação do App.jsx
+                // setTimeout(() => {
+                //   navigate('/'); // Redireciona para a página principal (home)
+                // }, 1500);
 
-        <p className={currentStyles.separator}>ou entre com</p>
-        <div className={currentStyles.socialLogin}>
-          <button onClick={handleGoogleLogin} className={`${currentStyles.socialButton} ${currentStyles.googleButton}`}>Google</button>
-          <button onClick={handleFacebookLogin} className={`${currentStyles.socialButton} ${currentStyles.facebookButton}`}>Facebook</button>
+            } else {
+                console.error("Login falhou ou perfil/token não encontrado na resposta da API:", response.data);
+                const errorMessage = response.data.message || response.data.status || "Resposta inesperada do servidor. Tente novamente.";
+                setGenericError(errorMessage);
+                setPassword('');
+            }
+
+        } catch (error) {
+            console.error('Erro no login:', error);
+            if (error.response && error.response.data && error.response.data.message) {
+                setGenericError(error.response.data.message);
+            } else if (error.response && error.response.data && error.response.data.status) {
+                setGenericError(error.response.data.status);
+            } else if (error.request) {
+                setGenericError('Não foi possível conectar ao servidor. Verifique sua conexão.');
+            } else {
+                setGenericError('Ocorreu um erro ao tentar fazer login. Tente novamente.');
+            }
+            setPassword('');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleFacebookLogin = () => { /* Lógica para login com Facebook */ };
+    const handleGoogleLogin = () => { /* Lógica para login com Google */ };
+
+    return (
+        <div className={currentStyles.loginContainer}>
+            <div className={currentStyles.loginBox}>
+                <h2 className={currentStyles.title}>Login Equilibrio</h2>
+
+                {genericError && <p className={currentStyles.errorMessageGlobal} style={{ textAlign: 'center', marginBottom: '1rem', color: 'red' }}>{genericError}</p>}
+                {successMessage && <p className={currentStyles.successMessage} style={{ textAlign: 'center', marginBottom: '1rem', color: 'green' }}>{successMessage}</p>}
+
+                <form onSubmit={handleLoginSubmit} noValidate>
+                    <div className={currentStyles.inputGroup}>
+                        <label htmlFor="email" className={currentStyles.label}>E-mail</label>
+                        <input
+                            type="email" id="email" placeholder="seuemail@exemplo.com" value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className={`${currentStyles.input} ${emailError ? currentStyles.inputError : ''}`}
+                            required
+                        />
+                        {emailError && <p id="emailError" className={currentStyles.errorMessage}>{emailError}</p>}
+                    </div>
+                    <div className={currentStyles.inputGroup}>
+                        <label htmlFor="password" className={currentStyles.label}>Senha</label>
+                        <input
+                            type="password" id="password" placeholder="Sua senha" value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className={`${currentStyles.input} ${passwordError ? currentStyles.inputError : ''}`}
+                            required
+                        />
+                        {passwordError && <p id="passwordError" className={currentStyles.errorMessage}>{passwordError}</p>}
+                    </div>
+                    <div className={currentStyles.options}>
+                        <Link to="/esqueceu-senha" className={currentStyles.link}>Esqueceu sua senha?</Link>
+                    </div>
+                    <button type="submit" className={currentStyles.loginButton} disabled={isLoading}>
+                        {isLoading ? 'Entrando...' : 'Entrar'}
+                    </button>
+                </form>
+
+                <p className={currentStyles.separator}>ou entre com</p>
+                <div className={currentStyles.socialLogin}>
+                    <button onClick={handleGoogleLogin} className={`${currentStyles.socialButton} ${currentStyles.googleButton}`}>Google</button>
+                    <button onClick={handleFacebookLogin} className={`${currentStyles.socialButton} ${currentStyles.facebookButton}`}>Facebook</button>
+                </div>
+                <div className={currentStyles.signupLink}>
+                    <p>Não tem uma conta? <Link to="/cadastro" className={currentStyles.link}>Cadastre-se</Link></p>
+                </div>
+            </div>
         </div>
-        <div className={currentStyles.signupLink}>
-          <p>Não tem uma conta? <Link to="/cadastro" className={currentStyles.link}>Cadastre-se</Link></p>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default Login; 
+export default Login;

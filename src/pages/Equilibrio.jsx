@@ -11,7 +11,7 @@ const Equilibrio = () => {
       <span className="text">Equilíbrio</span>
       <button
         className="gear-button"
-        onClick={() => navigate("/ettings")}
+        onClick={() => navigate("/settings")}
       >
       </button>
     </div>
