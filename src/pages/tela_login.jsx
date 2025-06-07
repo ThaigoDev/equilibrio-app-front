@@ -28,206 +28,7 @@ const styles = {
     successMessage: 'successMessage'
 };
 
-
-// Componente principal que irá renderizar o Login
-const App = () => {
-    const navigate = useNavigate();
-
-    // Função para lidar com o sucesso do login.
-    const handleLoginSuccess = () => {
-        console.log("Login bem-sucedido. Redirecionando para /home.");
-        navigate('/home'); // Redireciona para a página home
-    };
-
-    return (
-        // A tag <style> com o CSS completo é adicionada aqui para garantir que os estilos sejam aplicados.
-        // Isto é necessário para a compilação e visualização no ambiente do Canvas.
-        <>
-            <style>
-                {`
-                .loginContainer {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    min-height: 100vh;
-                    background-color: #f0f2f5; /* Um cinza claro para o fundo */
-                    padding: 20px;
-                    font-family: 'Arial', sans-serif; /* Fonte genérica, substitua pela do seu app */
-                }
-
-                .loginBox {
-                    background-color: #fff;
-                    padding: 30px 40px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                    width: 100%;
-                    max-width: 400px;
-                    text-align: center;
-                }
-
-                .title {
-                    color: #333; /* Cor escura para o título */
-                    margin-bottom: 25px;
-                    font-size: 24px;
-                    font-weight: 600;
-                }
-
-                .inputGroup {
-                    margin-bottom: 20px;
-                    text-align: left;
-                }
-
-                .label {
-                    display: block;
-                    margin-bottom: 8px;
-                    color: #555; /* Cor mais suave para labels */
-                    font-size: 14px;
-                    font-weight: 500;
-                }
-
-                .input {
-                    width: 100%;
-                    padding: 12px 15px;
-                    border: 1px solid #ccc;
-                    border-radius: 6px;
-                    box-sizing: border-box; /* Importante para o padding não aumentar o tamanho total */
-                    font-size: 16px;
-                    transition: border-color 0.2s ease-in-out;
-                }
-
-                .input:focus {
-                    border-color: #007bff; /* Um azul para indicar foco, ajuste para sua paleta */
-                    outline: none;
-                    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-                }
-
-                .inputError {
-                    border-color: #dc3545; /* Vermelho para erros */
-                }
-
-                .inputError:focus {
-                    border-color: #dc3545;
-                    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
-                }
-
-                .errorMessage {
-                    color: #dc3545;
-                    font-size: 12px;
-                    margin-top: 5px;
-                }
-
-                .options {
-                    text-align: right;
-                    margin-bottom: 20px;
-                }
-
-                .link {
-                    color: #007bff; /* Azul para links */
-                    text-decoration: none;
-                    font-size: 14px;
-                }
-
-                .link:hover {
-                    text-decoration: underline;
-                }
-
-                .loginButton {
-                    width: 100%;
-                    padding: 12px 15px;
-                    background-color: #28a745; /* Verde para o botão principal - pensando em "equilibrio" */
-                    color: #fff;
-                    border: none;
-                    border-radius: 6px;
-                    font-size: 16px;
-                    font-weight: bold;
-                    cursor: pointer;
-                    transition: background-color 0.2s ease-in-out;
-                }
-
-                .loginButton:hover {
-                    background-color: #218838; /* Verde mais escuro no hover */
-                }
-
-                .loginButton:disabled {
-                    background-color: #6c757d;
-                    cursor: not-allowed;
-                }
-
-                .separator {
-                    margin: 25px 0;
-                    color: #6c757d;
-                    font-size: 14px;
-                    display: flex;
-                    align-items: center;
-                    text-align: center;
-                }
-
-                .separator::before,
-                .separator::after {
-                    content: '';
-                    flex: 1;
-                    border-bottom: 1px solid #ddd;
-                }
-
-                .separator:not(:empty)::before {
-                    margin-right: .25em;
-                }
-
-                .separator:not(:empty)::after {
-                    margin-left: .25em;
-                }
-
-                .socialLogin {
-                    display: flex;
-                    flex-direction: column; /* Ou 'row' se preferir lado a lado */
-                    gap: 10px; /* Espaço entre os botões sociais */
-                    margin-bottom: 25px;
-                }
-
-                .socialButton {
-                    padding: 10px 15px;
-                    border: none;
-                    border-radius: 6px;
-                    font-size: 15px;
-                    color: #fff;
-                    cursor: pointer;
-                    transition: opacity 0.2s ease-in-out;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 8px; /* Espaço para ícones, se adicionados */
-                }
-
-                .socialButton:hover {
-                    opacity: 0.9;
-                }
-
-                .googleButton {
-                    background-color: #db4437; /* Cor do Google */
-                }
-
-                .facebookButton {
-                    background-color: #3b5998; /* Cor do Facebook */
-                }
-
-                .signupLink {
-                    margin-top: 20px;
-                    font-size: 14px;
-                    color: #333;
-                }
-                `}
-            </style>
-            <div className={styles.loginContainer}> {/* Usando a classe CSS aqui para o container */}
-                {/* O componente Login é renderizado aqui, passando a função de sucesso */}
-                <Login onLoginSuccess={handleLoginSuccess} />
-            </div>
-        </>
-    );
-};
-
-
-const Login = ({ onLoginSuccess }) => {
-    // Estados para os campos do formulário e mensagens de erro/sucesso
+const Login = ({ onLoginSuccess }) => { // onLoginSuccess é recebido via props
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -259,8 +60,8 @@ const Login = ({ onLoginSuccess }) => {
         if (!password) {
             setPasswordError('A senha é obrigatória.');
             isValid = false;
-        } else if (password.length < 6) {
-            setPasswordError('A senha deve ter pelo menos 6 caracteres.');
+        } else if (password.length < 6) { // Ajuste conforme a validação do backend (agora 4 caracteres)
+            setPasswordError('A senha deve ter pelo menos 6 caracteres.'); // Mantenha ou ajuste a mensagem
             isValid = false;
         }
         return isValid;
@@ -288,49 +89,42 @@ const Login = ({ onLoginSuccess }) => {
         try {
             // Requisição POST para o endpoint de login da API
             const response = await axios.post('https://equilibrio-api-node.onrender.com/api/auth/login', loginData);
-            console.log('Resposta da API de Login:', response.data);
+            console.log('Resposta da API de Login:', response.data); // Mantenha para debug
 
             const apiStatus = response.data.status;
             const userProfile = response.data.profile;
-            const apiErrors = response.data.errors; // Para erros de validação do backend
 
-            // Verifica se o login foi bem-sucedido (status "sucess" e perfil de usuário)
-            if (apiStatus === 'sucess' && userProfile) {
+            if (apiStatus === 'sucess' && userProfile && userProfile.token) { // Adicionei verificação de userProfile.token
                 setSuccessMessage('Login realizado com sucesso! Redirecionando...');
-                
-                // Chama a função onLoginSuccess passada via props.
+
+                // ***** CORREÇÃO AQUI: CHAME onLoginSuccess com o token recebido *****
                 if (onLoginSuccess) {
-                    onLoginSuccess(userProfile); // userProfile ainda é passado para a prop onLoginSuccess
+                    console.log("Login.jsx: Chamando onLoginSuccess com o token:", userProfile.token);
+                    onLoginSuccess(userProfile.token); // Passa o token para o App.jsx
                 }
 
-                // Redireciona para a página home após um pequeno atraso (para exibir a mensagem de sucesso)
-                setTimeout(() => {
-                    navigate('/home'); 
-                }, 1000);
+                setEmail('');
+                setPassword('');
 
-            } else if (apiErrors && apiErrors.length > 0) {
-                // Se a API retornar erros de validação (ex: e-mail ou senha incorretos)
-                setGenericError(apiErrors.join(', ')); // Concatena os erros para exibição
-                setPassword(''); // Limpa a senha para nova tentativa
+                // O redirecionamento será tratado pelo App.jsx uma vez que o authToken seja atualizado.
+                // Remover o setTimeout aqui para evitar conflito com a navegação do App.jsx
+                // setTimeout(() => {
+                //   navigate('/'); // Redireciona para a página principal (home)
+                // }, 1500);
+
             } else {
-                // Se o status não for "sucess" ou o perfil não for encontrado, exibe mensagem de erro genérica
+                console.error("Login falhou ou perfil/token não encontrado na resposta da API:", response.data);
                 const errorMessage = response.data.message || response.data.status || "Resposta inesperada do servidor. Tente novamente.";
                 setGenericError(errorMessage);
                 setPassword('');
             }
 
         } catch (error) {
-            // Tratamento de erros de rede ou de resposta da API
             console.error('Erro no login:', error);
-            if (error.response && error.response.data) {
-                // Erros de resposta do servidor (ex: 401 Unauthorized, 404 Not Found)
-                if (error.response.data.message) {
-                    setGenericError(error.response.data.message);
-                } else if (error.response.data.status) {
-                    setGenericError(error.response.data.status);
-                } else {
-                    setGenericError('Ocorreu um erro inesperado do servidor.');
-                }
+            if (error.response && error.response.data && error.response.data.message) {
+                setGenericError(error.response.data.message);
+            } else if (error.response && error.response.data && error.response.data.status) {
+                setGenericError(error.response.data.status);
             } else if (error.request) {
                 // Erro de rede: servidor não respondeu
                 setGenericError('Não foi possível conectar ao servidor. Verifique sua conexão.');
