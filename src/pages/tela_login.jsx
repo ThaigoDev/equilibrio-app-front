@@ -93,14 +93,27 @@ const Login = ({ onLoginSuccess }) => { // onLoginSuccess é recebido via props
 
             const apiStatus = response.data.status;
             const userProfile = response.data.profile;
+ HEAD
+
+            const apiErrors = response.data.errors;
+ 3aaff88ed1990bb84a6d8b262986682cf7e53f30
 
             if (apiStatus === 'sucess' && userProfile && userProfile.token) { // Adicionei verificação de userProfile.token
                 setSuccessMessage('Login realizado com sucesso! Redirecionando...');
+ HEAD
 
                 // ***** CORREÇÃO AQUI: CHAME onLoginSuccess com o token recebido *****
                 if (onLoginSuccess) {
                     console.log("Login.jsx: Chamando onLoginSuccess com o token:", userProfile.token);
                     onLoginSuccess(userProfile.token); // Passa o token para o App.jsx
+
+                
+                // Chama a função onLoginSuccess passada via props.
+                if (onLoginSuccess) { 
+                
+                    onLoginSuccess(userProfile.id);
+                     localStorage.setItem('equilibrioAuthToken', userProfile._id) // userProfile ainda é passado para a prop onLoginSuccess
+                    3aaff88ed1990bb84a6d8b262986682cf7e53f30
                 }
 
                 setEmail('');
