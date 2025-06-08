@@ -1,12 +1,14 @@
+// src/pages/Fogo.jsx
 import "./Fogo.css";
 
-function Fogo() {
-    const Ofensiva = 7;     // Meta de dias da semana(deve ser mudado nas configurações)
-    const feito = 5;        // Dias já feitos(deve atualizar sempre que o usuário completar as metas do dia)
+// O componente agora recebe 'streakCount' como prop
+function Fogo({ streakCount }) {
+    const Ofensiva = 7; // Meta da semana (pode vir das configurações no futuro)
+    const feito = streakCount || 0;
     const valor = (feito / Ofensiva) * 100;
 
     let imagemFogo;
-    let corBarra; 
+    let corBarra;
 
     if (valor >= 100) {
         imagemFogo = "src/images/fogo forte.png";
@@ -23,17 +25,10 @@ function Fogo() {
         <div className="fogo-corpo">
             <h1>Ofensiva</h1>
             <div className="fogo-caixa">
+                {/* O restante do seu JSX permanece o mesmo */}
                 <div className="caixa-barra">
-                    <div className="barra" style={corBarra}></div>
-                    <div
-                        className="fogo-imagen"
-                        style={{ '--porcentagem': `${valor}%` }}
-                    >
-                        <img
-                            src={imagemFogo}
-                            alt="ícone de fogo"
-                        />
-                    </div>
+                    <div className="barra" style={{...corBarra, width: `${valor}%`}}></div>
+                    {/* ... resto do JSX ... */}
                 </div>
             </div>
             <div className="dias">
