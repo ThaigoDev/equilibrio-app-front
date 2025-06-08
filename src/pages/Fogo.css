@@ -1,66 +1,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
 }
 
+/* Container principal para centralizar todo o componente */
 .fogo-corpo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 500px;
-}
-.fogo-corpo h1{
-    font-size: 25px;
-    margin-left: 20%;
-    width: 30%;
+    align-items: center; /* Centraliza horizontalmente os itens filhos: h1, fogo-caixa, dias */
+    width: 100%; /* Ocupa 100% da largura do pai */
+    max-width: 500px; /* Limita a largura máxima */
+    margin: 25px auto; /* Centraliza o .fogo-corpo na página */
+    /* REMOVIDAS AS LINHAS ABAIXO: */
+    /* padding: 25px; */
+    /* background-color: #ffffff; */
+    /* border-radius: 8px; */
+    /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
 }
 
-    .fogo-caixa {
-    margin-left: 30px;
+.fogo-corpo h1 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.fogo-caixa {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 67%;
-    }
-
-.fogo-imagen img {
-    width: 60px;
-    height: 65px;
-    margin-top: -40px;
-    margin-left: -20px;
-    
+    width: 90%;
+    position: relative; /* CRÍTICO: Define o contexto de posicionamento para .fogo-imagen */
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .fogo-imagen {
     position: absolute;
     left: var(--porcentagem);
+    transform: translateX(-50%); /* Centraliza a imagem exatamente no ponto da porcentagem */
     width: 70px;
     height: 75px;
-    
+    z-index: 10; /* Garante que a imagem fique acima da barra */
+}
+
+.fogo-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .caixa-barra {
-    color: #fff;
     height: 10px;
-    width: 90%;
+    width: 100%;
+    background-color: #e0e0e0; /* Fundo cinza claro para a barra vazia */
+    border-radius: 40px;
+    overflow: hidden;
     position: relative;
-    margin-left: 30%;
-    
 }
 
 .barra {
-
-    border: solid 1px #000;
-    height: 5px;
-    width: 105%;
+    height: 100%;
+    border: none;
     border-radius: 40px;
-    
+    transition: width 0.5s ease-in-out;
+}
 
+.dias {
+    width: 100%;
+    text-align: right;
+    margin-top: 10px;
+    padding-right: 5%;
 }
 
 .dias h3 {
-    float: right;
-    margin-right: 18%;
+    font-size: 18px;
+    margin: 0;
 }

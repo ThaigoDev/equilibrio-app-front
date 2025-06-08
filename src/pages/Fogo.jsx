@@ -1,9 +1,8 @@
 // src/pages/Fogo.jsx
 import "./Fogo.css";
 
-// O componente agora recebe 'streakCount' como prop
 function Fogo({ streakCount }) {
-    const Ofensiva = 7; // Meta da semana (pode vir das configurações no futuro)
+    const Ofensiva = 7;
     const feito = streakCount || 0;
     const valor = (feito / Ofensiva) * 100;
 
@@ -25,10 +24,12 @@ function Fogo({ streakCount }) {
         <div className="fogo-corpo">
             <h1>Ofensiva</h1>
             <div className="fogo-caixa">
-                {/* O restante do seu JSX permanece o mesmo */}
+                {/* Aqui entra a div da imagem do fogo */}
+                <div className="fogo-imagen" style={{ '--porcentagem': `${valor}%` }}> {/* Define a variável CSS aqui */}
+                    <img src={imagemFogo} alt="Ícone de Fogo" />
+                </div>
                 <div className="caixa-barra">
-                    <div className="barra" style={{...corBarra, width: `${valor}%`}}></div>
-                    {/* ... resto do JSX ... */}
+                    <div className="barra" style={{ ...corBarra, width: `${valor}%` }}></div>
                 </div>
             </div>
             <div className="dias">
