@@ -4,20 +4,20 @@ import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-
 
 // Suas importações de página
 import Home from "./pages/Home";
-import Settings from "./pages/Settings"; // Import do Settings
+import Settings from "./pages/Settings";
 import Fogo from "./pages/Fogo";
 import PopUp_habitos_saudaveis from "./pages/PopUp_habitos_saudaveis";
 import PopUp_Calendario_emocional from "./pages/PopUp_Calendario_emocional";
 import TelaLogin from "./pages/tela_login";
 import TelaCadastro from "./pages/TelaCadastro";
 
-// --- Componente de Layout Compartilhado (MODIFICADO) ---
-const SharedLayout = () => {
-    console.log("SHAREDLAYOUT: Renderizando.");
+// --- Componente de Layout Compartilhado ---
+const SharedLayout = ({ title = "App Equilibrio" }) => {
     return (
         <div>
             <header style={{ padding: '10px 20px', background: '#f0f0f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ddd' }}>
-                <h2>App Equilibrio (Layout Compartilhado)</h2>
+                <h2>{title}</h2>
+                {/* Você pode adicionar navegação global aqui se for o caso */}
             </header>
             <main style={{ padding: '20px' }}>
                 <Outlet />
@@ -26,23 +26,19 @@ const SharedLayout = () => {
     );
 };
 
-// --- Componente de Rota Protegida (CORRIGIDO) ---
-const ProtectedRoute = ({ isAuthenticated }) => { // Remova 'children' se não estiver usando explicitamente
-    console.log("PROTECTEDROUTE: Verificando autenticação. isAuthenticated:", isAuthenticated);
+// --- Componente de Rota Protegida ---
+const ProtectedRoute = ({ isAuthenticated }) => {
     if (!isAuthenticated) {
-        console.log("PROTECTEDROUTE: Não autenticado, redirecionando para /login");
-        return <Navigate to="/login" replace />; // CORRIGIDO: Redireciona para /login
+        return <Navigate to="/login" replace />;
     }
-    console.log("PROTECTEDROUTE: Autenticado, renderizando Outlet");
     return <Outlet />;
 };
 
 function App() {
     const [authToken, setAuthToken] = useState(localStorage.getItem('equilibrioAuthToken'));
-    console.log("APP.JSX: Estado inicial de authToken:", authToken);
 
+    // Efeito para sincronizar authToken com localStorage
     useEffect(() => {
-        console.log("APP.JSX useEffect: authToken mudou para:", authToken);
         if (authToken) {
             localStorage.setItem('equilibrioAuthToken', authToken);
         } else {
@@ -50,42 +46,50 @@ function App() {
         }
     }, [authToken]);
 
+    // Função para lidar com o sucesso do login
     const handleLoginSuccess = (token) => {
-        console.log("APP.JSX handleLoginSuccess: Recebeu token:", token);
         setAuthToken(token);
     };
 
+    // Função para lidar com o logout
     const handleLogout = () => {
-        console.log("APP.JSX handleLogout: Saindo...");
         setAuthToken(null);
     };
+
+    // Definição das rotas
+    const publicRoutes = [
+        { path: "/login", element: authToken ? <Navigate to="/" replace /> : <TelaLogin onLoginSuccess={handleLoginSuccess} /> },
+        { path: "/cadastro", element: authToken ? <Navigate to="/" replace /> : <TelaCadastro /> },
+        { path: "/home", element: <Home /> }, // Rota para testes ou como fallback
+    ];
+
+    const privateRoutes = [
+        { path: "/", element: <Home /> },
+        { path: "/settings", element: <Settings onLogout={handleLogout} /> },
+        { path: "/fogo", element: <Fogo /> },
+        { path: "/popup-habitos", element: <PopUp_habitos_saudaveis /> },
+        { path: "/popup-calendario", element: <PopUp_Calendario_emocional /> },
+        { path: "/signup", element: <Home /> }, // Se /signup for uma rota interna protegida
+    ];
 
     return (
         <Router>
             <Routes>
                 {/* Rotas públicas */}
-                <Route
-                    path="/login"
-                    element={authToken ? (<Navigate to="/" replace />) : (<TelaLogin onLoginSuccess={handleLoginSuccess} />)}
-                />
-                <Route
-                    path="/cadastro"
-                    element={authToken ? (<Navigate to="/" replace />) : (<TelaCadastro />)}
-                />
-                <Route path="/home" element={<Home />} /> {/* Rota para testes ou como fallback */}
+                {publicRoutes.map((route, index) => (
+                    <Route key={index} path={route.path} element={route.element} />
+                ))}
 
                 {/* Agrupador de Rotas Protegidas */}
                 <Route element={<ProtectedRoute isAuthenticated={!!authToken} />}>
                     <Route element={<SharedLayout />}>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/settings" element={<Settings onLogout={handleLogout} />} />
-                        <Route path="/fogo" element={<Fogo />} />
-                        <Route path="/popup-habitos" element={<PopUp_habitos_saudaveis />} />
-                        <Route path="/popup-calendario" element={<PopUp_Calendario_emocional />} />
-                        <Route path="/signup" element={<Home />} />
+                        {privateRoutes.map((route, index) => (
+                            <Route key={index} path={route.path} element={route.element} />
+                        ))}
                     </Route>
                 </Route>
 
+                {/* Catch-all para rotas não encontradas */}
                 <Route
                     path="*"
                     element={<Navigate to={authToken ? "/" : "/login"} replace />}
