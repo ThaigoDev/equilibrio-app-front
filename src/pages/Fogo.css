@@ -5,19 +5,13 @@
     box-sizing: border-box;
 }
 
-/* Container principal para centralizar todo o componente */
 .fogo-corpo {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente os itens filhos: h1, fogo-caixa, dias */
-    width: 100%; /* Ocupa 100% da largura do pai */
-    max-width: 500px; /* Limita a largura máxima */
-    margin: 25px auto; /* Centraliza o .fogo-corpo na página */
-    /* REMOVIDAS AS LINHAS ABAIXO: */
-    /* padding: 25px; */
-    /* background-color: #ffffff; */
-    /* border-radius: 8px; */
-    /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+    align-items: center; 
+    width: 100%; 
+    max-width: 500px; 
+    margin: 25px auto; 
 }
 
 .fogo-corpo h1 {
@@ -33,18 +27,21 @@
     justify-content: center;
     align-items: center;
     width: 90%;
-    position: relative; /* CRÍTICO: Define o contexto de posicionamento para .fogo-imagen */
+    position: relative; 
     margin-top: 20px;
     margin-bottom: 30px;
 }
 
 .fogo-imagen {
     position: absolute;
-    left: var(--porcentagem);
-    transform: translateX(-50%); /* Centraliza a imagem exatamente no ponto da porcentagem */
+    left: var(--porcentagem); 
+    transform: translateX(-50%); 
     width: 70px;
     height: 75px;
-    z-index: 10; /* Garante que a imagem fique acima da barra */
+    z-index: 10; 
+    transition: left 0.5s ease-in-out;
+    top: -38px;
+    
 }
 
 .fogo-imagen img {
@@ -56,7 +53,7 @@
 .caixa-barra {
     height: 10px;
     width: 100%;
-    background-color: #e0e0e0; /* Fundo cinza claro para a barra vazia */
+    background-color: #e0e0e0; 
     border-radius: 40px;
     overflow: hidden;
     position: relative;
@@ -66,7 +63,7 @@
     height: 100%;
     border: none;
     border-radius: 40px;
-    transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out; 
 }
 
 .dias {
