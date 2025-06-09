@@ -10,16 +10,16 @@ import Fogo from "./Fogo";
 import Calendar from "./Calendar";
 import "./Home.css";
 
-// --- ESTE É O ÚNICO COMPONENTE HOME ---
 const Home = () => {
     const [dailyData, setDailyData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    // ADICIONADO: Estado para controlar a visibilidade do pop-up de hábitos
     const [showHabitPopup, setShowHabitPopup] = useState(false);
 
+    // Tentamos pegar o ID do usuário de ambos os lugares para garantir
+    const userId = localStorage.getItem('userId') || localStorage.getItem('equilibrioAuthToken');
+
     const fetchDailyData = async () => {
-        const userId = localStorage.getItem('equilibrioAuthToken');
         if (!userId) {
             setError("Usuário não autenticado.");
             setIsLoading(false);
@@ -52,7 +52,8 @@ const Home = () => {
 
     useEffect(() => {
         fetchDailyData();
-    }, []);
+        // Adicionamos userId como dependência para re-executar se ele mudar (ex: após login)
+    }, [userId]);
 
     const handleDataUpdate = () => {
         fetchDailyData(); 
@@ -66,13 +67,11 @@ const Home = () => {
         return <div style={{ color: 'red' }}>{error}</div>;
     }
 
-    // --- O RETURN FOI MODIFICADO PARA INCLUIR A LÓGICA DO POP-UP ---
     return (
         <div className="home-container">
             <Equilibrio />
             <Sentimentos initialData={dailyData} onUpdate={handleDataUpdate} />
             
-            {/* MODIFICADO: Envolvemos o HabitosSaudaveis em uma div clicável */}
             <div onClick={() => setShowHabitPopup(true)} style={{ cursor: 'pointer' }}>
                 <HabitosSaudaveis habitsData={dailyData ? dailyData.habits : null} />
             </div>
@@ -80,12 +79,16 @@ const Home = () => {
             <Fogo streakCount={dailyData ? dailyData.streakCount : 0} />
             <Calendar />
 
-            {/* ADICIONADO: Renderização condicional do Pop-up de hábitos */}
             {showHabitPopup && (
                 <PopUp_habitos_saudaveis 
                     initialData={dailyData}
                     onClose={() => setShowHabitPopup(false)}
                     onUpdate={handleDataUpdate}
+                    dateToSave={new Date()} // Sempre salva para o dia de hoje a partir da Home
+                    
+                    // --- CORREÇÃO APLICADA AQUI ---
+                    // Passamos o userId que pegamos no início do componente
+                    userId={userId} 
                 />
             )}
         </div>
