@@ -8,7 +8,7 @@ import Sentimentos from "./Sentimentos";
 import HabitosSaudaveis from "./HabitosSaudaveis";
 import Fogo from "./Fogo";
 import Calendar from "./Calendar";
-import "./Home.css";
+import "./Home.css"
 
 const Home = () => {
     const [dailyData, setDailyData] = useState(null);
