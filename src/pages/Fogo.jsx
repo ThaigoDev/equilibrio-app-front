@@ -1,9 +1,8 @@
-// src/pages/Fogo.jsx
 import "./Fogo.css";
 
 function Fogo({ streakCount }) {
     const Ofensiva = 7;
-    const feito = streakCount || 3;
+    const feito = streakCount || 4;
     const valor = (feito / Ofensiva) * 100;
 
     let imagemFogo;
