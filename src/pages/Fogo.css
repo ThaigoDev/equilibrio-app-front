@@ -1,66 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
 }
 
 .fogo-corpo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 500px;
-}
-.fogo-corpo h1{
-    font-size: 25px;
-    margin-left: 20%;
-    width: 30%;
+    align-items: center; 
+    width: 100%; 
+    max-width: 500px; 
+    margin: 25px auto; 
 }
 
-    .fogo-caixa {
+.fogo-corpo h1 {
+    font-size: 25px;
+    margin-bottom: 20px;
     margin-left: 30px;
+    width: 100%;
+}
+
+.fogo-caixa {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 67%;
-    }
-
-.fogo-imagen img {
-    width: 60px;
-    height: 65px;
-    margin-top: -40px;
-    margin-left: -20px;
-    
+    width: 90%;
+    position: relative; 
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .fogo-imagen {
     position: absolute;
-    left: var(--porcentagem);
+    left: var(--porcentagem); 
+    transform: translateX(-50%); 
     width: 70px;
     height: 75px;
+    z-index: 10; 
+    transition: left 0.5s ease-in-out;
+    top: -38px;
     
+}
+
+.fogo-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .caixa-barra {
-    color: #fff;
     height: 10px;
-    width: 90%;
+    width: 100%;
+    background-color: #e0e0e0; 
+    border-radius: 40px;
+    overflow: hidden;
     position: relative;
-    margin-left: 30%;
-    
 }
 
 .barra {
-
-    border: solid 1px #000;
-    height: 5px;
-    width: 105%;
+    height: 100%;
+    border: none;
     border-radius: 40px;
-    
+    transition: width 0.5s ease-in-out; 
+}
 
+.dias {
+    width: 100%;
+    text-align: right;
+    margin-top: 10px;
+    padding-right: 5%;
 }
 
 .dias h3 {
-    float: right;
-    margin-right: 18%;
+    font-size: 18px;
+    margin: 0;
 }

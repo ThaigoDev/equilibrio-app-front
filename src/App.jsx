@@ -4,103 +4,99 @@ import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-
 
 // Suas importações de página
 import Home from "./pages/Home";
-import Settings from "./pages/Settings"; // Import do Settings
+import Settings from "./pages/Settings";
 import Fogo from "./pages/Fogo";
 import PopUp_habitos_saudaveis from "./pages/PopUp_habitos_saudaveis";
 import PopUp_Calendario_emocional from "./pages/PopUp_Calendario_emocional";
 import TelaLogin from "./pages/tela_login";
 import TelaCadastro from "./pages/TelaCadastro";
 
-// --- Componente de Layout Compartilhado (MODIFICADO) ---
-const SharedLayout = () => { // Removida a prop onLogout daqui, se não for mais usada pelo layout em si
-  console.log("SHAREDLAYOUT: Renderizando.");
-  return (
-    <div>
-      <header style={{ padding: '10px 20px', background: '#f0f0f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ddd' }}>
-        <h2>App Equilibrio (Layout Compartilhado)</h2>
-        {/* Botão Sair REMOVIDO daqui */}
-      </header>
-      <main style={{ padding: '20px' }}>
-        <Outlet /> 
-      </main>
-    </div>
-  );
+// --- Componente de Layout Compartilhado ---
+const SharedLayout = ({ title = "App Equilibrio" }) => {
+    return (
+        <div>
+            <header style={{ padding: '10px 20px', background: '#f0f0f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ddd' }}>
+                <h2>{title}</h2>
+                {/* Você pode adicionar navegação global aqui se for o caso */}
+            </header>
+            <main style={{ padding: '20px' }}>
+                <Outlet />
+            </main>
+        </div>
+    );
 };
 
-// --- Componente de Rota Protegida (permanece o mesmo) ---
-const ProtectedRoute = ({ isAuthenticated, children }) => {
-  console.log("PROTECTEDROUTE: Verificando autenticação. isAuthenticated:", isAuthenticated);
-  if (!isAuthenticated) {
-    console.log("PROTECTEDROUTE: Não autenticado, redirecionando para /login");
-    return <Navigate to="/login" replace />;
-  }
-  console.log("PROTECTEDROUTE: Autenticado, renderizando Outlet");
-  return <Outlet />;
+// --- Componente de Rota Protegida ---
+const ProtectedRoute = ({ isAuthenticated }) => {
+    if (!isAuthenticated) {
+        return <Navigate to="/login" replace />;
+    }
+    return <Outlet />;
 };
 
 function App() {
-  const [authToken, setAuthToken] = useState(localStorage.getItem('equilibrioAuthToken'));
-  // ... (console.logs e useEffect como antes) ...
-  console.log("APP.JSX: Estado inicial de authToken:", authToken);
+    const [authToken, setAuthToken] = useState(localStorage.getItem('equilibrioAuthToken'));
 
-  useEffect(() => {
-    console.log("APP.JSX useEffect: authToken mudou para:", authToken);
-    if (authToken) {
-      localStorage.setItem('equilibrioAuthToken', authToken);
-    } else {
-      localStorage.removeItem('equilibrioAuthToken');
-    }
-  }, [authToken]);
+    // Efeito para sincronizar authToken com localStorage
+    useEffect(() => {
+        if (authToken) {
+            localStorage.setItem('equilibrioAuthToken', authToken);
+        } else {
+            localStorage.removeItem('equilibrioAuthToken');
+        }
+    }, [authToken]);
 
+    // Função para lidar com o sucesso do login
+    const handleLoginSuccess = (token) => {
+        setAuthToken(token);
+    };
 
-  const handleLoginSuccess = (token) => {
-    console.log("APP.JSX handleLoginSuccess: Recebeu token:", token);
-    setAuthToken(token);
-  };
+    // Função para lidar com o logout
+    const handleLogout = () => {
+        setAuthToken(null);
+    };
 
-  const handleLogout = () => {
-    console.log("APP.JSX handleLogout: Saindo...");
-    setAuthToken(null);
-  };
+    // Definição das rotas
+    const publicRoutes = [
+        { path: "/login", element: authToken ? <Navigate to="/" replace /> : <TelaLogin onLoginSuccess={handleLoginSuccess} /> },
+        { path: "/cadastro", element: authToken ? <Navigate to="/" replace /> : <TelaCadastro /> },
+        { path: "/home", element: <Home /> }, // Rota para testes ou como fallback
+    ];
 
-  return (
-    <Router>
-      <Routes>
-        {/* Rotas públicas (Login, Cadastro, TestHome) como antes */}
-        <Route
-          path="/login"
-          element={ authToken ? (<Navigate to="/" replace />) : (<TelaLogin onLoginSuccess={handleLoginSuccess} />) }
-        />
-        <Route
-          path="/cadastro"
-          element={ authToken ? (<Navigate to="/" replace />) : (<TelaCadastro />) }
-        />
-        <Route path="/testhome" element={<Home />} /> {/* Se ainda estiver usando para testes */}
+    const privateRoutes = [
+        { path: "/", element: <Home /> },
+        { path: "/settings", element: <Settings onLogout={handleLogout} /> },
+        { path: "/fogo", element: <Fogo /> },
+        { path: "/popup-habitos", element: <PopUp_habitos_saudaveis /> },
+        { path: "/popup-calendario", element: <PopUp_Calendario_emocional /> },
+        { path: "/signup", element: <Home /> }, // Se /signup for uma rota interna protegida
+    ];
 
-        {/* Agrupador de Rotas Protegidas */}
-        <Route element={<ProtectedRoute isAuthenticated={!!authToken} />}>
-          {/* SharedLayout não precisa mais da prop onLogout aqui, se ela não for usada por ele */}
-          <Route element={<SharedLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            
-            {/* MODIFICADO: Passando handleLogout para o componente Settings */}
-            <Route path="/settings" element={<Settings onLogout={handleLogout} />} /> 
-            
-            <Route path="/fogo" element={<Fogo />} />
-            <Route path="/popup-habitos" element={<PopUp_habitos_saudaveis />} />
-            <Route path="/popup-calendario" element={<PopUp_Calendario_emocional />} />
-            <Route path="/signup" element={<Home />} />
-          </Route>
-        </Route>
+    return (
+        <Router>
+            <Routes>
+                {/* Rotas públicas */}
+                {publicRoutes.map((route, index) => (
+                    <Route key={index} path={route.path} element={route.element} />
+                ))}
 
-        <Route
-          path="*"
-          element={<Navigate to={authToken ? "/" : "/login"} replace />}
-        />
-      </Routes>
-    </Router>
-  );
+                {/* Agrupador de Rotas Protegidas */}
+                <Route element={<ProtectedRoute isAuthenticated={!!authToken} />}>
+                    <Route element={<SharedLayout />}>
+                        {privateRoutes.map((route, index) => (
+                            <Route key={index} path={route.path} element={route.element} />
+                        ))}
+                    </Route>
+                </Route>
+
+                {/* Catch-all para rotas não encontradas */}
+                <Route
+                    path="*"
+                    element={<Navigate to={authToken ? "/" : "/login"} replace />}
+                />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;

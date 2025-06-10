@@ -1,122 +1,209 @@
-.container{
-  width: 300px;
-  height: 300px;
-  overflow: hidden;
-  flex-wrap: wrap;
+.container {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    flex-wrap: wrap;
+    /* Adicionando posicionamento relativo para que o ::before funcione corretamente */
+    position: relative; 
+    padding-top: 2rem; /* Espaço para o título não sobrepor o calendário */
 }
 
 .container::before {
-  content: "-------- Calendário Emocional --------";    
-  top: 0;                        
-  left: 50%;                      
-  font-size: 1rem;            
-  color: black;               
-  font-family: 'Inter', sans-serif;
+    content: "-------- Calendário Emocional --------";
+    position: absolute; /* Usar absolute para posicionar em relação ao container */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza o texto horizontalmente */
+    font-size: 1rem;
+    color: black;
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap; /* Impede que o texto quebre a linha */
 }
 
 .react-calendar {
-  width: 350px ;
-  height: 300px ;
-  min-height: 300px ;
-  max-height: 300px ;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  font-family: 'Inter', sans-serif;
-  
+    width: 350px;
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    font-family: 'Inter', sans-serif;
 }
 
 .react-calendar_navigation_label {
-  font-size: 1.25rem;
-  font-weight: 500;         
-  text-transform: capitalize; 
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-transform: capitalize;
 }
 
 /* Cabeçalho de navegação (mês e botões) */
 .react-calendar__navigation {
-  display: flex;
-  text-transform: uppercase;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3px;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
 }
 
 .react-calendar__navigation button {
-  background: none;
-  border: none;
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s;
+    background: none;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
 }
 
 .react-calendar__navigation button:hover {
-  background: rgba(59, 130, 246, 0.1);
+    background: rgba(59, 130, 246, 0.1);
 }
 
 /* Títulos dos dias da semana */
 .react-calendar_month-view_weekdays {
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  color: #6b7280;
-  margin-bottom: 8px;
-  overflow: hidden;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-bottom: 8px;
+    overflow: hidden;
 }
 
 .react-calendar_month-viewweekdays_weekday {
-  text-align: center;
-  padding: 4px 0;
+    text-align: center;
+    padding: 4px 0;
 }
 
 /* Tiles (cada dia) */
 .react-calendar__tile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  border: none !important;
-  border-radius: 25px;
-  margin: 2px;
-  max-width: 30px;
-  height: 30px;
-  line-height: 40px;
-  transition: background 0.5s, transform 0.5s;
-  transform-origin: center center;
+    display: flex;
+    /* Alterado para flex-direction column para acomodar o indicador */
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border: none !important;
+    border-radius: 25px;
+    margin: 2px;
+    max-width: 30px;
+    height: 30px;
+    /* Ajustado line-height para melhor alinhamento vertical do número */
+    line-height: normal; 
+    padding-bottom: 4px; /* Espaço para o indicador não sair do tile */
+    transition: background 0.5s, transform 0.5s;
+    transform-origin: center center;
+    box-sizing: content-box; /* Garante que o padding não aumente o tamanho total */
 }
 
 .react-calendar__tile:hover {
-  color: white;
-  background: black;
-  
+    color: white;
+    background: black;
 }
 
 /* Dia selecionado */
 .react-calendar__tile--active {
-  background: #3b82f6 ;
-  color: #ffffff ;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+    background: #3b82f6;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
 }
 
 /* Dia de hoje */
 .react-calendar__tile--now {
-  background: #fef3c7;
-  color: #d97706;
-  font-weight: 600;
+    background: #fef3c7;
+    color: #d97706;
+    font-weight: 600;
 }
 
 /* Desabilitados (dias fora do mês atual) */
 .react-calendar__tile--disabled {
-  
-  color: #d1d5db;
+    color: #d1d5db;
 }
 
 /* Botões de ano (se usar view="year") */
 .react-calendar_year-view .react-calendar_tile {
-  text-transform: uppercase; 
-  font-size: 0.6rem;
-  height: 50px;
-  max-width: 70px;
-  line-height: 50px;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    height: 50px;
+    max-width: 70px;
+    line-height: 50px;
+}
+
+
+/*--------------- NOVO: Estilo para o indicador de entrada ---------------*/
+.entry-indicator {
+    height: 6px; /* Tamanho do ponto */
+    width: 6px;
+    background-color: #3b82f6; /* Cor azul, consistente com o tema */
+    border-radius: 50%;
+    margin: 0 auto;
+    /* Ajuste para posicionar abaixo do número do dia */
+    margin-top: 2px; 
+}
+
+/* Garante que o indicador no dia selecionado seja visível */
+.react-calendar__tile--active .entry-indicator {
+    background-color: white;
+}
+
+/* Garante que o indicador no dia atual seja visível */
+.react-calendar__tile--now .entry-indicator {
+    background-color: #d97706;
+}
+
+/* Faz o indicador mudar de cor no hover junto com o texto */
+.react-calendar__tile:hover .entry-indicator {
+    background-color: white;
+}
+
+
+/*--------------- 1. Estilo para travar a rolagem do body ---------------*/
+body.no-scroll {
+    overflow: hidden !important;
+    height: 100vh;
+    width: 100vw;
+    /* Ajuda a prevenir o "salto" da página ao remover a barra de rolagem */
+    padding-right: var(--scrollbar-width, 0px);
+}
+
+/* 2. Estilo para o overlay que escurece a tela */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+}
+
+/* 3. Estilo do popup ter certeza de que ele esteja acima do overlay */
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    box-sizing: border-box;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.popup-header .header-left {
+    display: flex;
+    align-items: center;
 }

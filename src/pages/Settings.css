@@ -1,21 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-* p{
+* p {
   font-family: 'Montserrat', sans-serif;
   font-size: 115%;
 }
+
 .setting-corpo {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0 10px;
-}
+  margin-top: 30px;
 
-.topo-setting {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: solid black 1px;
-  width: 109%;
-  margin-left: -18px;
 }
 
 .logo-settings {
@@ -41,12 +35,13 @@
 .botao-fechar-container {
   position: absolute;
   top: 125px;
-  right: 45px;
+  right: 40px;
+
 }
 
 .botao-fechar {
-  background-color: transparent;
-  border: none;
+
+
   font-size: 24px;
   font-weight: bolder;
   color: #000;
@@ -82,19 +77,19 @@
 }
 
 
-.corpo-topo{
+.corpo-topo {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed; 
-  top: 0; 
+  position: fixed;
+  top: 0;
   left: -1px;
-  width: 100%; 
-  background-color: white; 
+  width: 100%;
+  background-color: white;
   padding: 20px;
   z-index: 10;
   font-family: Arial, sans-serif;
-  border-bottom: 2px solid black; 
+  border-bottom: 2px solid black;
 }
 
 
@@ -167,6 +162,7 @@
 }
 
 .desenvolvedores {
+  border-top: solid 1px black;
   margin-left: 10px;
 }
 
@@ -232,4 +228,27 @@
   padding-bottom: 20px;
   white-space: nowrap;
   font-weight: bold;
+}
+
+.botao-sair-settings {
+  padding: 12px 25px;
+  background-color: white;
+  border: none;
+  border-Radius: 5px;
+  cursor: pointer;
+  font-Size: 16px;
+  font-Weight: bold;
+  border: #000 solid 1px;
+}
+
+.apagar-conta {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.logout-section {
+  margin-Bottom: 20px;
+  text-align: center;
+  padding-top: 20px;
+
 }

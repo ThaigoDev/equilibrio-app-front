@@ -3,13 +3,12 @@
 
 .habitos-container {
   background-color: #ffffff;
-  padding: 25px; 
-  margin: 25px 0; 
+  padding: 10px;
+  margin: 10px auto; /* Adiciona 'auto' para as margens esquerda e direita */
   font-family: 'Montserrat', sans-serif;
   width: 100%;
-  max-width: 500px; 
+  max-width: 500px;
 }
-
 
 .habitos-titulo {
   font-size: 115%; 
@@ -65,5 +64,6 @@
 .habito-icon {
   width: 34px;
   height: 34px;
+  object-fit: cover;
 }
 

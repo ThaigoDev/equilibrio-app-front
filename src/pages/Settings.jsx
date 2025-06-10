@@ -72,40 +72,33 @@ function Settings({ onLogout }) {
                 </div>
 
                 {/* Seção do Botão de Logout */}
-                <div className="logout-section" style={{ marginTop: '30px', marginBottom: '30px', textAlign: 'center', borderTop: '1px solid #eee', paddingTop: '30px' }}>
-                    <button 
-                        onClick={onLogout} // Chama a função de logout recebida via props
-                        className="botao-sair-settings" // Você pode estilizar esta classe no seu Settings.css
-                        style={{ 
-                            padding: '12px 25px', 
-                            backgroundColor: '#dc3545', 
-                            color: 'white', 
-                            border: 'none', 
-                            borderRadius: '5px', 
-                            cursor: 'pointer', 
-                            fontSize: '16px',
-                            fontWeight: 'bold'
-                        }}
-                    >
-                        Sair (Logout)
-                    </button>
+               <div className="logout-section" >
+
+                    <button onClick={onLogout} className="botao-sair-settings" > Sair (Logout) </button>
+
+                </div>
+
+                <div className="logout-section" >
+
+                    <button onClick={onLogout} className="botao-sair-settings apagar-conta" > apagar conta </button>
+
                 </div>
 
                 <div className="desenvolvedores">
                     <h2>Desenvolvido por:</h2>
                     {/* ...lista de desenvolvedores... */}
                     <p>Thiago Duarte - Lider Geral / Lider Dev.back-end.</p>
-                    <p>Jairo de Cássio - Lider Dev. Front-End.</p>
-                    <p>Cauã Vitor - Dev. Front-End.</p>
-                    <p>Lucas Henrique - Dev. Front-End.</p>
-                    <p>Timoteo Teixeira - Dev. Front-End.</p>
-                    <p>Ygor - Dev. Front-End.</p>
-                    <p>Cauan Algusto - Dev.back-end.</p>
-                    <p>Luciano Junior - Dev.back-end.</p>
-                    <p>Marco túlio - Dev.back-end.</p>
-                    <p>Rafael Florindo - Dev.back-end.</p>
-                    <p>Matheus Henringer - Documentação.</p>
-                    <p>Otávio Herdy - UX/UI / Dev. Front-End.</p>
+                    <p>Jairo de Cássio - Lider Dev. Front-End.</p>
+                    <p>Cauã Vitor - Dev. Front-End.</p>
+                    <p>Lucas Henrique - Dev. Front-End.</p>
+                    <p>Timoteo Teixeira - Dev. Front-End.</p>
+                    <p>Ygor - Dev. Front-End.</p>
+                    <p>Cauan Algusto - Dev.back-end.</p>
+                    <p>Luciano Junior - Dev.back-end.</p>
+                    <p>Marco túlio - Dev.back-end.</p>
+                    <p>Rafael Florindo - Dev.back-end.</p>
+                    <p>Matheus Henringer - Documentação.</p>
+                    <p>Otávio Herdy - UX/UI / Dev. Front-End.</p>
                 </div>
             </div>
 
