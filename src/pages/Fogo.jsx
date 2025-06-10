@@ -1,22 +1,21 @@
-// src/pages/Fogo.jsx
 import "./Fogo.css";
 
 function Fogo({ streakCount }) {
     const Ofensiva = 7;
-    const feito = streakCount || 0;
+    const feito = streakCount || 4;
     const valor = (feito / Ofensiva) * 100;
 
     let imagemFogo;
     let corBarra;
 
     if (valor >= 100) {
-        imagemFogo = "src/images/fogo forte.png";
+        imagemFogo = "../src/images/fogo forte.png";
         corBarra = { backgroundColor: '#FF6347' };
     } else if (valor >= 10) {
-        imagemFogo = "src/images/fogo acesso.png";
+        imagemFogo = "../src/images/fogo acesso.png";
         corBarra = { backgroundColor: '#FF8C00' };
     } else {
-        imagemFogo = "src/images/fogo apagado.png";
+        imagemFogo = "../src/images/fogo apagado.png";
         corBarra = { backgroundColor: '#A9A9A9' };
     }
 

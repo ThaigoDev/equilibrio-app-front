@@ -72,23 +72,16 @@ function Settings({ onLogout }) {
                 </div>
 
                 {/* Seção do Botão de Logout */}
-                <div className="logout-section" style={{ marginTop: '30px', marginBottom: '30px', textAlign: 'center', borderTop: '1px solid #eee', paddingTop: '30px' }}>
-                    <button
-                        onClick={onLogout} // Chama a função de logout recebida via props
-                        className="botao-sair-settings" // Você pode estilizar esta classe no seu Settings.css
-                        style={{
-                            padding: '12px 25px',
-                            backgroundColor: '#dc3545',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '5px',
-                            cursor: 'pointer',
-                            fontSize: '16px',
-                            fontWeight: 'bold'
-                        }}
-                    >
-                        Sair (Logout)
-                    </button>
+               <div className="logout-section" >
+
+                    <button onClick={onLogout} className="botao-sair-settings" > Sair (Logout) </button>
+
+                </div>
+
+                <div className="logout-section" >
+
+                    <button onClick={onLogout} className="botao-sair-settings apagar-conta" > apagar conta </button>
+
                 </div>
 
                 <div className="desenvolvedores">
