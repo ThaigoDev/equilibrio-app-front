@@ -6,91 +6,152 @@
     width: 80%;
     max-width: 400px;
     background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Mais arredondado, como o calendário */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 999;
-    border: 2px solid #000000;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    border: none; /* Remove a borda original */
+    box-sizing: border-box; /* Inclui padding e border no width/height */
+    max-height: 90vh; /* Limita a altura máxima para não estourar a tela */
+    overflow-y: auto; /* Adiciona scroll se o conteúdo for muito grande */
+    font-family: 'Inter', sans-serif; /* Usando a fonte do calendário */
 }
 
+/* Cabeçalho do popup */
 .popup-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center; /* Alinha verticalmente emoji, título e botão */
     width: 100%;
+    margin-bottom: 15px; /* Espaço abaixo do cabeçalho */
 }
 
-.header-left {
-    display: flex;
-    align-items: center;
-
+.popup-header span[role="img"] { /* Estilo para o emoji */
+    font-size: 2em; /* Tamanho do emoji */
+    margin-right: 10px; /* Espaço entre o emoji e o título */
 }
 
-.emoji {
-    font-size: 2em;
-    margin-right: 0.5em;
-}
-
-h3 {
-    font-size: 1.2em;
+.popup-header h3 {
+    font-size: 1.25rem; /* Tamanho da fonte do título da data */
+    font-weight: 500; /* Peso da fonte */
     color: #333;
+    flex-grow: 1; /* Permite que o título ocupe o espaço disponível */
+    text-align: left; /* Alinha o texto da data à esquerda */
 }
 
 .close-button {
     background: none;
     border: none;
-    font-size: 1.5em;
-    color: #333;
+    font-size: 1.8em; /* Aumenta o tamanho do X */
+    color: #6b7280; /* Cor mais suave para o botão de fechar */
     cursor: pointer;
-    margin-top: -5px;
+    padding: 5px; /* Adiciona padding para facilitar o clique */
+    transition: color 0.2s; /* Transição suave na cor */
 }
 
-.popup-note {
-    margin-top: 10px 0;
-    font-size: 0.95em;
-    color: #555;
-    text-align: left;
-    line-height: 1.4;
-    border: 2px solid #868181;
-    border-radius: 6px;
-    padding: 10px;
-    background-color: #ffffff;
+.close-button:hover {
+    color: #ef4444; /* Cor de hover para o botão de fechar */
 }
 
-.popup-info {
-    margin-top: 0px;
+/* Conteúdo principal do popup */
+.popup-content {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os elementos */
 }
 
-.popup-item {
+/* Caixa de notas */
+.notes-box {
+    background-color: #f9fafb; /* Fundo mais claro */
+    border: 1px solid #e5e7eb; /* Borda suave */
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 15px;
+    min-height: 80px; /* Altura mínima para a caixa de notas */
+    display: flex;
+    align-items: center; /* Centraliza o texto verticalmente se for curto */
+    text-align: left;
+    color: #374151; /* Cor do texto */
+    line-height: 1.5;
+    font-size: 0.95em;
+}
+
+.notes-box p {
+    margin: 0; /* Remove margens padrão do parágrafo */
+}
+
+/* Lista de estatísticas */
+.stats-list {
+    width: 100%;
+    border-top: 1px solid #e5e7eb; /* Borda superior para separar */
+    padding-top: 15px; /* Espaço acima do primeiro item */
+}
+
+.stat-item {
     display: flex;
     justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 2px solid #484545;
-    font-family: 'Arial', sans-serif;
-    color: #000000;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e7eb; /* Borda entre os itens */
+    font-size: 1em;
+    color: #4b5563; /* Cor do texto dos labels */
 }
 
-.popup-item strong {
-    font-weight: 600;
-    color: #3b3838;
+.stat-item:last-child {
+    border-bottom: none; /* Remove a borda do último item */
 }
 
-.popup-item:last-child {
-    border-bottom: none;
+.stat-item span {
+    font-weight: 400; /* Peso da fonte para o label */
+    display: flex; /* Para alinhar emoji e texto */
+    align-items: center;
+    gap: 5px; /* Espaço entre emoji e texto */
 }
 
-.fechar-button:hover {
-    color: red;
+.stat-item strong {
+    font-weight: 600; /* Peso da fonte para o valor */
+    color: #1f2937; /* Cor mais escura para o valor */
 }
 
-.fechar-button {
-    background: none;
+/* Botão de salvar/editar */
+.salvar-button {
+    background-color: #3b82f6; /* Cor azul consistente com o calendário */
+    color: white;
     border: none;
-    font-size: 1.5em;
-    color: #000000;
-    margin-top: -5px;
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    width: 100%; /* Ocupa a largura total */
+    margin-top: 10px; /* Espaço acima do botão */
+}
+
+.salvar-button:hover {
+    background-color: #2563eb; /* Azul mais escuro no hover */
+    transform: translateY(-2px); /* Pequeno efeito de elevação */
+}
+
+/* Overlay e corpo (se necessário para o popup) */
+/* Já presente no seu CSS do calendário, apenas para garantir a sobreposição */
+body.no-scroll {
+    overflow: hidden !important;
+    height: 100vh;
+    width: 100vw;
+    padding-right: var(--scrollbar-width, 0px);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Abaixo do popup, mas acima do restante */
+    backdrop-filter: blur(2px);
 }
