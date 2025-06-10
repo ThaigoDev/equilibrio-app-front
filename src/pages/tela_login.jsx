@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
-
-// 1. Adicione onLoginSuccess como uma prop aqui
+import Logo from '../images/create a circular image of the same image to fit into the circle as a PNG.png'; // Ajuste o caminho conforme necessário
 const Login = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -66,6 +65,7 @@ const Login = ({ onLoginSuccess }) => {
   return (
     <div className={styles.loginContainer}>
       <div className={styles.loginBox}>
+        <img src={Logo} alt ="Logo Equilibrio" className={styles.logo}/>
         <h2 className={styles.title}>Login Equilibrio</h2>
         <form onSubmit={handleLoginSubmit} noValidate>
           <div className={styles.inputGroup}>
