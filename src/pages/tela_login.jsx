@@ -62,17 +62,6 @@ const Login = ({ onLoginSuccess }) => {
     }
   };
 
-  const handleFacebookLogin = () => {
-    console.log('Login via Facebook');
-    // Implementação do login via Facebook (requer SDK)
-    // Se implementado, também deveria chamar onLoginSuccess
-  };
-
-  const handleGoogleLogin = () => {
-    console.log('Login via Google');
-    // Implementação do login via Google (requer SDK/biblioteca)
-    // Se implementado, também deveria chamar onLoginSuccess
-  };
 
   return (
     <div className={styles.loginContainer}>
@@ -109,9 +98,6 @@ const Login = ({ onLoginSuccess }) => {
             {passwordError && <p id="passwordError" className={styles.errorMessage}>{passwordError}</p>}
           </div>
 
-          <div className={styles.options}>
-            <a href="/esqueceu-senha" className={styles.link}>Esqueceu sua senha?</a>
-          </div>
 
           <button
             type="submit"
