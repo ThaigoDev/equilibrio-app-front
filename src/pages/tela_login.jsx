@@ -108,26 +108,9 @@ const Login = ({ onLoginSuccess }) => {
           </button>
         </form>
 
-        <p className={styles.separator}>ou entre com</p>
+        
 
-        <div className={styles.socialLogin}>
-          <button
-            onClick={handleGoogleLogin}
-            className={`${styles.socialButton} ${styles.googleButton}`}
-            type="button"
-            aria-label="Login com Google"
-          >
-            Google
-          </button>
-          <button
-            onClick={handleFacebookLogin}
-            className={`${styles.socialButton} ${styles.facebookButton}`}
-            type="button"
-            aria-label="Login com Facebook"
-          >
-            Facebook
-          </button>
-        </div>
+        
 
         <div className={styles.signupLink}>
           <p>Não tem uma conta? <a href="/cadastro" className={styles.link}>Cadastre-se</a></p>
