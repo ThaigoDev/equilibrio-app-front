@@ -2,6 +2,7 @@
 
 /* Contêiner principal */
 .sentimentos-container {
+  
   display: flex;
   flex-direction: column;
   align-items: left;
