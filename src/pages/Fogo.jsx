@@ -9,13 +9,13 @@ function Fogo({ streakCount }) {
     let corBarra;
 
     if (valor >= 100) {
-        imagemFogo = "./src/images/fogo forte.png";
+        imagemFogo = "../src/images/fogo forte.png";
         corBarra = { backgroundColor: '#FF6347' };
     } else if (valor >= 10) {
-        imagemFogo = "./src/images/fogo acesso.png";
+        imagemFogo = "../src/images/fogo acesso.png";
         corBarra = { backgroundColor: '#FF8C00' };
     } else {
-        imagemFogo = "./src/images/fogo apagado.png";
+        imagemFogo = "../src/images/fogo apagado.png";
         corBarra = { backgroundColor: '#A9A9A9' };
     }
 
