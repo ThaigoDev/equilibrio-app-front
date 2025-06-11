@@ -1,3 +1,4 @@
+// src/pages/HabitosSaudaveis.jsx
 import React from 'react';
 import './HabitosSaudaveis.css';
 
@@ -6,75 +7,85 @@ import exercicioIcon from '../images/exercicio.png';
 import sonoIcon from '../images/sono.png';
 import pesoIcon from '../images/peso.png';
 
-const HabitosSaudaveis = () => {
-  // Dados mockados - ESTES DADOS SERÃO SUBSTITUÍDOS PELO BACKEND
-  const habitos = {
-    agua: { atual: 0, meta: 8 },
-    exercicio: { atual: 0, meta: 60 },
-    sono: { atual: 0, meta: 60 },
-    peso: { atual: 70.5, meta: 60.5 }
-  };
+// O componente agora recebe 'habitsData' como prop
+const HabitosSaudaveis = ({ habitsData }) => {
+    // Dados padrão caso não venha nada do backend ainda
+    const habitos = {
+        waterCups: habitsData?.waterCups ?? 0,
+        exerciseMinutes: habitsData?.exerciseMinutes ?? 0,
+        sleepMinutes: habitsData?.sleepMinutes ?? 0,
+        weight: habitsData?.weight ?? 0,
+    };
 
-  return (
-  <div className="habitos-container">
-    <h2 className="habitos-titulo">Hábitos saudáveis</h2>
-    
-    <div className="habitos-box">
-      {/* ÁGUA */}
-      <div className="habito-item">
-        <div className="habito-info">
-          <img src={aguaIcon} alt="Ícone água" className="habito-icon" />
-          <span className="habito-nome">Água</span>
+    // Metas (ainda podem ser estáticas aqui ou vir das configurações no futuro)
+    const metas = {
+        agua: 8,
+        exercicio: 30, // Meta do backend é 30 min
+        sono: 420, // Meta do backend é 7h = 420 min
+        peso: 70.0 // Exemplo de meta de peso
+    };
+
+    // Função para converter minutos em horas e minutos
+    const formatMinutesToHoursAndMinutes = (totalMinutes) => {
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        if (minutes > 0) {
+            return `${hours}h ${minutes}min`;
+        }
+        return `${hours}h`;
+    };
+
+    return (
+        <div className="habitos-container">
+            <h2 className="habitos-titulo">Hábitos saudáveis</h2>
+            
+            <div className="habitos-box">
+                {/* --- ESTRUTURA COMPLETA PARA ÁGUA --- */}
+                <div className="habito-item">
+                    <div className="habito-info">
+                        <img src={aguaIcon} alt="Ícone água" className="habito-icon" />
+                        <span className="habito-nome">Água</span>
+                    </div>
+                    <span className="habito-valor">
+                        {habitos.waterCups} / {metas.agua} copos
+                    </span>
+                </div>
+
+                {/* --- ESTRUTURA COMPLETA PARA EXERCÍCIO --- */}
+                <div className="habito-item">
+                    <div className="habito-info">
+                        <img src={exercicioIcon} alt="Ícone exercício" className="habito-icon" />
+                        <span className="habito-nome">Exercício</span>
+                    </div>
+                    <span className="habito-valor">
+                        {habitos.exerciseMinutes} / {metas.exercicio} min
+                    </span>
+                </div>
+
+                {/* --- ESTRUTURA COMPLETA PARA SONO (AGORA COM HORAS) --- */}
+                <div className="habito-item">
+                    <div className="habito-info">
+                        <img src={sonoIcon} alt="Ícone sono" className="habito-icon" />
+                        <span className="habito-nome">Sono</span>
+                    </div>
+                    <span className="habito-valor">
+                        {formatMinutesToHoursAndMinutes(habitos.sleepMinutes)} / {formatMinutesToHoursAndMinutes(metas.sono)}
+                    </span>
+                </div>
+
+                {/* --- ESTRUTURA COMPLETA PARA PESO --- */}
+                <div className="habito-item">
+                    <div className="habito-info">
+                        <img src={pesoIcon} alt="Ícone peso" className="habito-icon" />
+                        <span className="habito-nome">Peso</span>
+                    </div>
+                    <span className="habito-valor">
+                        {habitos.weight} / {metas.peso} kg
+                    </span>
+                </div>
+            </div>
         </div>
-        <span className="habito-valor" 
-              data-agua-atual={habitos.agua.atual} 
-              data-agua-meta={habitos.agua.meta}>
-          {habitos.agua.atual} / {habitos.agua.meta} copos
-        </span>
-      </div>
-
-      {/* EXERCÍCIO */}
-      <div className="habito-item">
-        <div className="habito-info">
-          <img src={exercicioIcon} alt="Ícone exercício" className="habito-icon" />
-          <span className="habito-nome">Exercício</span>
-        </div>
-        <span className="habito-valor" 
-              data-exercicio-atual={habitos.exercicio.atual} 
-              data-exercicio-meta={habitos.exercicio.meta}>
-          {habitos.exercicio.atual.toString().padStart(2, '0')} / {habitos.exercicio.meta} min
-        </span>
-      </div>
-
-      {/* SONO */}
-      <div className="habito-item">
-        <div className="habito-info">
-          <img src={sonoIcon} alt="Ícone sono" className="habito-icon" />
-          <span className="habito-nome">Sono</span>
-        </div>
-        <span className="habito-valor" 
-              data-sono-atual={habitos.sono.atual} 
-              data-sono-meta={habitos.sono.meta}>
-          {habitos.sono.atual.toString().padStart(2, '0')} / {habitos.sono.meta} min
-        </span>
-      </div>
-
-      {/* PESO */}
-      <div className="habito-item">
-        <div className="habito-info">
-          <img src={pesoIcon} alt="Ícone peso" className="habito-icon" />
-          <span className="habito-nome">Peso</span>
-        </div>
-        <span className="habito-valor" 
-              data-peso-atual={habitos.peso.atual} 
-              data-peso-meta={habitos.peso.meta}>
-          {habitos.peso.atual} / {habitos.peso.meta} kg
-        </span>
-      </div>
-    </div>
-  </div>
-);
-
+    );
 };
 
 export default HabitosSaudaveis;
