@@ -38,7 +38,7 @@ function Fogo({ streakCount }) {
                 </div>
             </div>
             <div className="dias">
-                <h3>{feito}/{Ofensiva} dias</h3>
+                <h3><span className="dia-completo">{feito}</span>/{Ofensiva} dias</h3>
             </div>
         </div>
     );
