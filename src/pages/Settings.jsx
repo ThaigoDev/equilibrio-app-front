@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Settings.css";
 import "./Equilibrio.css"; // Se este CSS for relevante para Settings, mantenha.
-
+import Logo from "../../src/images/logo-equilibrio.png"
 // Adicione onLogout como uma prop aqui
 function Settings({ onLogout }) {
     const navigate = useNavigate();
@@ -42,7 +42,7 @@ function Settings({ onLogout }) {
         <>
             <div className="setting-corpo">
                 <div className="corpo-topo">
-                    <div className="circle"></div>
+                    <div className="circle"><img src={Logo} alt="" /></div>
                     <span className="text">Equilíbrio</span>
                 </div>
 
