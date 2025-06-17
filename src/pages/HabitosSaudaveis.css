@@ -24,7 +24,7 @@
   border: 1px solid #000000;
   border-radius: 10px; 
   padding: 20px;
-  margin: 11px;
+  margin: 11px; 
 }
 
 
@@ -32,10 +32,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 18px; 
-  padding: 8px 0; 
-}
+  margin-bottom: 18px;  
 
+}
+.water-item, .sleep-item, .exercice-item {
+border-bottom: 1px solid #202020  ; 
+  padding-bottom: 2vh;
+
+
+}
 
 .habito-nome {
   font-weight: 500;

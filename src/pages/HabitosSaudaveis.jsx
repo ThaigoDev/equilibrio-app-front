@@ -31,7 +31,7 @@ const HabitosSaudaveis = ({ habitsData }) => {
             
             <div className="habitos-box">
                 {/* --- ESTRUTURA COMPLETA PARA ÁGUA --- */}
-                <div className="habito-item">
+                <div className="habito-item water-item">
                     <div className="habito-info">
                         <img src={aguaIcon} alt="Ícone água" className="habito-icon" />
                         <span className="habito-nome">Água</span>
@@ -42,7 +42,7 @@ const HabitosSaudaveis = ({ habitsData }) => {
                 </div>
 
                 {/* --- ESTRUTURA COMPLETA PARA EXERCÍCIO --- */}
-                <div className="habito-item">
+                <div className="habito-item exercice-item">
                     <div className="habito-info">
                         <img src={exercicioIcon} alt="Ícone exercício" className="habito-icon" />
                         <span className="habito-nome">Exercício</span>
@@ -53,7 +53,7 @@ const HabitosSaudaveis = ({ habitsData }) => {
                 </div>
 
                 {/* --- ESTRUTURA COMPLETA PARA SONO --- */}
-                <div className="habito-item">
+                <div className="habito-item sleep-item">
                     <div className="habito-info">
                         <img src={sonoIcon} alt="Ícone sono" className="habito-icon" />
                         <span className="habito-nome">Sono</span>
@@ -64,7 +64,7 @@ const HabitosSaudaveis = ({ habitsData }) => {
                 </div>
 
                 {/* --- ESTRUTURA COMPLETA PARA PESO --- */}
-                <div className="habito-item">
+                <div className="habito-item habbits-item">
                     <div className="habito-info">
                         <img src={pesoIcon} alt="Ícone peso" className="habito-icon" />
                         <span className="habito-nome">Peso</span>
