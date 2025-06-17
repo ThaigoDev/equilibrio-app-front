@@ -7,7 +7,7 @@ import fogoApagado from "../../src/images/fogo-apagado.png";
 
 function Fogo({ streakCount }) {
     const Ofensiva = 7;
-    const feito = streakCount || 4;
+    const feito = streakCount || 1;
     const valor = (feito / Ofensiva) * 100;
 
     let imagemFogo;
