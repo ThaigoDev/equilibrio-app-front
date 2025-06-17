@@ -1,11 +1,12 @@
 .main,
 .main * {
-  box-sizing: border-box;
+  box-sizing: border-box; 
 }
 .main {
   background: #ffffff;
   height: 1089px;
-  position: relative;
+  position: relative; 
+
 }
 .image-2 {
   width: 199px;

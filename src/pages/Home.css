@@ -5,15 +5,18 @@
     align-items: center;
     background-color: white; /* Ajuste de fundo */
     min-height: 100vh; /* Garante que a página ocupe toda a altura da tela */
-    margin: 0;
+    margin: 0; 
     padding: 0;
 } 
-
+main {
+  overflow-x: hidden;
+}
 
 .main {
   background: #ffffff;
   height: 100%;
-  position: relative;
+  position: relative; 
+
 }
 .image-2 {
   width: 199px;
