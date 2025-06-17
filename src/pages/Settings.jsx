@@ -80,7 +80,7 @@ function Settings({ onLogout }) {
 
                 <div className="logout-section" >
 
-                    <button onClick={onLogout} className="botao-sair-settings apagar-conta" > apagar conta </button>
+                    <button onClick={onLogout} className="botao-sair-settings apagar-conta" > Apagar conta </button>
 
                 </div>
 
