@@ -3,12 +3,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: fixed; /* Fixa o componente no topo da página */
     top: 0; /* Define a posição no topo */
-    width: 100%; /* Ocupa a largura total da página */
+    width: 100vw; /* Ocupa a largura total da página */
     background-color: white; /* Adicione um fundo, se necessário */
     padding: 20px; /* Espaçamento interno */
-    z-index: 10; /* Mantém o componente acima de outros elementos */
+    z-index: 1; /* Mantém o componente acima de outros elementos */
     font-family: Arial, sans-serif;
     border-bottom: 2px solid black; /* Linha separadora */
 }

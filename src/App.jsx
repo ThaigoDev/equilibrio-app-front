@@ -15,10 +15,7 @@ import TelaCadastro from "./pages/TelaCadastro";
 const SharedLayout = ({ title = "App Equilibrio" }) => {
     return (
         <div>
-            <header style={{ padding: '10px 20px', background: '#f0f0f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #ddd' }}>
-                <h2>{title}</h2>
-                {/* Você pode adicionar navegação global aqui se for o caso */}
-            </header>
+           
             <main style={{ padding: '20px' }}>
                 <Outlet />
             </main>
