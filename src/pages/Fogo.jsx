@@ -1,5 +1,10 @@
 import "./Fogo.css";
 
+// 1. Importe as imagens aqui no topo
+import fogoForte from "../../src/images/fogo-forte.png";
+import fogoAcesso from "../../src/images/fogo-acesso.png";
+import fogoApagado from "../../src/images/fogo-apagado.png";
+
 function Fogo({ streakCount }) {
     const Ofensiva = 7;
     const feito = streakCount || 4;
@@ -8,14 +13,15 @@ function Fogo({ streakCount }) {
     let imagemFogo;
     let corBarra;
 
+    // 2. Use as variáveis importadas ao invés de strings de texto
     if (valor >= 100) {
-        imagemFogo = "./src/images/fogo-forte.png";
+        imagemFogo = fogoForte; // Use a variável importada
         corBarra = { backgroundColor: '#FF6347' };
     } else if (valor >= 10) {
-        imagemFogo = "./src/images/fogo-acesso.png";
+        imagemFogo = fogoAcesso; // Use a variável importada
         corBarra = { backgroundColor: '#FF8C00' };
     } else {
-        imagemFogo = "./src/images/fogo-apagado.png";
+        imagemFogo = fogoApagado; // Use a variável importada
         corBarra = { backgroundColor: '#A9A9A9' };
     }
 
@@ -23,8 +29,8 @@ function Fogo({ streakCount }) {
         <div className="fogo-corpo">
             <h1>Ofensiva</h1>
             <div className="fogo-caixa">
-                {/* Aqui entra a div da imagem do fogo */}
-                <div className="fogo-imagen" style={{ '--porcentagem': `${valor}%` }}> {/* Define a variável CSS aqui */}
+                <div className="fogo-imagen" style={{ '--porcentagem': `${valor}%` }}>
+                    {/* O React usará o caminho correto que foi gerado no build */}
                     <img src={imagemFogo} alt="Ícone de Fogo" />
                 </div>
                 <div className="caixa-barra">
