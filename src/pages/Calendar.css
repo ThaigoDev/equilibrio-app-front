@@ -1,16 +1,16 @@
 .container {
     width: 300px;
     height: 300px; 
-    background-color: red;
     overflow: hidden;
     flex-wrap: wrap;
     /* Adicionando posicionamento relativo para que o ::before funcione corretamente */
     position: relative; 
-    padding-top: 2rem; /* Espaço para o título não sobrepor o calendário */
+    padding-top: 2rem; 
+    padding-bottom: 2vh; /* Espaço para o título não sobrepor o calendário */
 }
 
 .container::before {
-    content: "-------- Calendário Emocional --------";
+ 
     position: absolute; /* Usar absolute para posicionar em relação ao container */
     top: 0;
     left: 50%;
@@ -19,6 +19,12 @@
     color: black;
     font-family: 'Inter', sans-serif;
     white-space: nowrap; /* Impede que o texto quebre a linha */
+} 
+.title-calendar {
+    font-size: 1.2em; 
+    text-align: start; 
+    width: 100vw; 
+    padding-left: 6vh;
 }
 
 .react-calendar {

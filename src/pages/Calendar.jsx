@@ -91,7 +91,8 @@ const CalendarComponent = () => {
     ) : null;
     
     return (
-        <div className="container">
+        <div className="container"> 
+          <h1 className="title-calendar">Calendário Emocional</h1>
             <Calendar
                 onClickDay={handleDateClick}
                 locale="pt-BR"
