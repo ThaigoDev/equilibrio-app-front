@@ -9,9 +9,8 @@
     display: flex;
     flex-direction: column;
     align-items: center; 
-    width: 100%; 
+    width: 100%;  
     max-width: 500px; 
-    margin: 25px auto; 
 }
 
 .fogo-corpo h1 {
