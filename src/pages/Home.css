@@ -1,4 +1,11 @@
+*{
+  padding: 0; 
+  margin: 0; 
+  box-sizing: border-box; 
+}
 .home-container {
+  overflow: hidden;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,7 +13,8 @@
     min-height: 100vh; /* Garante que a página ocupe toda a altura da tela */
     margin: 0;
     padding: 0;
-}
+} 
+
 
 .main {
   background: #ffffff;
